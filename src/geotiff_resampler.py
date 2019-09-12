@@ -2,9 +2,9 @@
 
 """Console script for src."""
 import sys
+import os
 import click
 import numpy as np
-import rasterio
 from contextlib import contextmanager
 import rasterio
 from rasterio import Affine, MemoryFile
@@ -12,33 +12,39 @@ from rasterio.enums import Resampling
 
 
 @click.command()
-@click.argument('sourcefile', type=click.Path(exists=True))
-@click.argument('targetfile', type=click.Path())
-@click.argument('target_resolution', type=np.float)
-def main(sourcefile, targetfile, target_resolution):
+@click.option('--sourcetiff', type=click.Path(exists=True), required=True,
+              prompt="Enter the path and filename of the source file",
+              help="Path to the original GEOTIFF raster image")
+@click.option('--target_resolution', type=np.float, required=True,
+              prompt="Enter the target resolution in appropriate units for the projection",
+              help="The resolution desired for the resampled image, in the units of that image's projection, eg., meters, degrees, etc.")
+def main(sourcetiff, target_resolution):
     """Application: Geotiff Resampler.
 
-    This tool will resample the a raster image to a different resolution.
-    The user enters the source GEOTIFF filename, the target GEOTIFF filename,
-    and a target resolution.
+    This tool will resample a raster image to a different resolution.
+    The user enters the source GEOTIFF filename, and a target resolution.
+    The tool will then resample the image to a new resolution and output the
+    new GEOTIFF file to the source directory.
 
     This tool will preserve the original projection of the image.
-
-    Arguments: \n
-        SOURCEFILE (path): Path to the original GEOTIFF raster image \n
-        TARGETFILE (path): the path and name of the new resampled raster image written by this application. \n
-        TARGET_RESOLUTION (float): The resolution desired for the resampled image, in the units of that image's projection, eg., meters, degrees, etc. \n
     """
-    resampler(sourcefile, targetfile, target_resolution)
+
+    resampler(sourcetiff, target_resolution)
     return 0
 
-def resampler(sourcefile, targetfile, target_resolution):
+
+def resampler(sourcefile, target_resolution):
 
     click.echo(
         "This package will resample a GEOTIFF Raster file to a different resolution.")
 
     # read source file and collect metadata for display.
     dat = rasterio.open(sourcefile)
+    targetfile = os.path.basename(sourcefile).split('.')[0] \
+                + '_resampled_' \
+                + str(target_resolution).replace(".", "_") \
+                + str(dat.crs.linear_units) \
+                + '.tif'
 
     # set projection to the source projection unless user specified otherwise.
 

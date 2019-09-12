@@ -4,27 +4,26 @@
 import sys
 import os
 import click
-import numpy as np
 import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling
 
 @click.command()
-@click.argument('sourcefile', type=click.Path(exists=True))
-@click.argument('target_epsg', type=str)
-def main(sourcefile, target_epsg='EPSG:4326'):
+@click.option('--sourcetiff', required=True, type=click.Path(exists=True),
+              prompt="Source file path",
+              help="Enter the path to the original GEOTIFF raster image")
+@click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
+              prompt="Target coordinate EPSG",
+              help="Enter the coordinate projection to apply to the raster image.")
+def main(sourcetiff, target_epsg='EPSG:4326'):
     """Application: Geotiff Reprojector.
 
         This tool will reproject a raster image to a different EPSG coordinate projection.
-        The user enters the source GEOTIFF filename, the target GEOTIFF filename,
-        and a target EPSG projection.
-
-        Arguments: \n
-            SOURCEFILE (path): Path to the original GEOTIFF raster image \n
-            TARGETFILE (path): the path and name of the new resampled raster image written by this application. \n
-            TARGET_EPSG (string): The coordinate projection to apply to the raster image. For examples 'EPSG:4326' \n
+        The user enters the source GEOTIFF filename, and a valid target EPSG projection.
+        The file is output to the same directory as the source file. The new file is
+        also compressed with JPEG compression to keep the file size manageable.
         """
 
-    reprojector(sourcefile, target_epsg)
+    reprojector(sourcetiff, target_epsg)
     return 0
 
 def reprojector(sourcefile, target_epsg='EPSG:4326'):
@@ -58,7 +57,8 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
             'crs': target_epsg,
             'transform': transform,
             'width': width,
-            'height': height
+            'height': height,
+            'compress': 'JPEG'
         })
 
         with rasterio.open(targetfile, 'w', **kwargs) as dst:

@@ -36,7 +36,7 @@ setup(
         'console_scripts': [
             'geotiff-resampler=src.geotiff_resampler:main',
             'geotiff-reprojector=src.geotiff_reprojector:main',
-            'geotiff-chopper=src.geotiff_chopper:main',
+            'geotiff-slicer=src.geotiff_chopper:main',
         ],
     },
     install_requires=requirements,

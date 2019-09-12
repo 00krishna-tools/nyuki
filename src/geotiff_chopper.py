@@ -8,26 +8,33 @@ import numpy as np
 import rasterio
 import rasterio.features
 from PIL import Image
+import PIL
 from osgeo import gdal
-from tqdm import trange
+from tqdm import trange, tqdm
 import geopandas as gpd
 import pandas as pd
 
+# disable pixel size checks
+PIL.Image.MAX_IMAGE_PIXELS = None
+
 @click.command()
-@click.argument('sourcetiff', type=click.Path(exists=True))
-@click.argument('sourcemask', type=click.Path())
-@click.argument('size', type=int)
+@click.option('--sourcetiff', type=click.Path(exists=True), required=True,
+              prompt="Enter the path for the source tiff image",
+              help="Path to the GEOTIFF raster image")
+@click.option('--sourcemask', type=click.Path(), required=True,
+              prompt="Enter the path for the source mask file",
+              help="Path to the labels geojson file that corresponds to the GEOTIFF file")
+@click.option('--size', type=int, required=True, default=512,
+              prompt="Enter the size of the sliced images in pixels",
+              help="The size in pixels of the chopped images, such as 512 for 512x512 images")
 def main(sourcetiff, sourcemask, size):
     """Application: Geotiff Chopper.
 
-        This tool will chop a raster image to a different EPSG coordinate projection.
-        The user enters the source GEOTIFF filename, the target GEOTIFF filename,
-        and a target EPSG projection.
-
-        Arguments: \n
-            SOURCEFILE (path): Path to the GEOTIFF raster image \n
-            SOURCEMASK (path): the path to the labels geojson file the corresponds to the GEOTIFF file.\n
-            SIZE (integer): The size in pixels of the chopped images, such as 512 for 512x512 images.\n
+        This tool will slice a raster GEOTIFF image into size x size PNG images with
+        corresponding labels.
+        The user enters the source GEOTIFF filename, the mask filename, and the sliced
+        image size. Output files are saved to 'images' and 'labels' folders in the
+        working directory.
         """
 
     chopper(sourcetiff, sourcemask, size)
@@ -37,12 +44,14 @@ def main(sourcetiff, sourcemask, size):
 def chopper(sourcetiff, sourcemask, size):
 
     raster = rasterio.open(sourcetiff)
+    buildings = gpd.read_file(sourcemask)
 
     click.echo("Application Settings:\n")
     click.echo(f"source image: {sourcetiff}")
     click.echo(f"source mask: {sourcemask}")
     click.echo(f"output image size: {size} x {size} ")
     click.echo(f"source epsg: {raster.crs}")
+    click.echo(f"masks epsg: {buildings.crs['init'].upper()}")
 
     # filenames for temporary files
     tmp_imagefilename = 'tmp_sourceimage.png'
@@ -51,10 +60,10 @@ def chopper(sourcetiff, sourcemask, size):
     img_prefix = os.path.basename(sourcetiff).split('.')[0]
 
     # read masks and remove empty geometries
-    buildings = gpd.read_file(sourcemask)
     buildings = buildings[~buildings.is_empty]
 
-    # rasterize the masks
+    # rasterize the
+    print('[INFO] Rasterizing the masks')
     tfl_raster = rasterize_masks(buildings, raster)
 
     # write masks to new png file.
@@ -68,15 +77,25 @@ def chopper(sourcetiff, sourcemask, size):
     ]
     options_string = " ".join(options_list)
 
+    print('[INFO] Converting image from TIFF to PNG format for chopping.\n This might take some time depending upon compression of the original TIFF file.')
+
     gdal.Translate(tmp_imagefilename,
                    sourcetiff,
                    options=options_string)
+
+    print('[INFO] Beginning the image slicing process.')
     img_chopper(tmp_imagefilename,
                 tmp_masksfilename,
                 img_master_directory,
                 prefix=img_prefix,
                 height=size,
                 width=size)
+
+    print('[INFO] Complete slicing image.')
+    print('[INFO] Cleaning up files.')
+    os.remove(tmp_imagefilename)
+    os.remove(tmp_masksfilename)
+    print('[INFO] Done.')
 
 def rasterize_masks(masks, raster):
     tfl_raster = rasterio.features.rasterize(
@@ -127,8 +146,8 @@ def img_chopper(img, label,
     csv_export = pd.DataFrame(np.zeros([image_max_height * image_max_width, 3]))
     csv_export.columns = ['image', 'label', 'naive_test_train_split90_10']
 
-    for i in trange(range(0, imgheight, height), desc='height_dimension'):
-        for j in trange(range(0, imgwidth, width), desc='width_dimension', leave=False):
+    for i in tqdm(range(0, imgheight, height), desc='height_dimension'):
+        for j in tqdm(range(0, imgwidth, width), desc='width_dimension', leave=False):
             box = (j, i, j + width, i + height)
             a = im.crop(box)
             b = lb.crop(box)
