@@ -35,6 +35,26 @@ def main(sourcetiff, sourcemask, size):
         The user enters the source GEOTIFF filename, the mask filename, and the sliced
         image size. Output files are saved to 'images' and 'labels' folders in the
         working directory.
+
+        This tool is used as follows. The User should first use a cool like QGIS or
+        similar to clip the raster layer using the vector (mask) layer--or alternatively
+        clipping the vector layer using the raster layer. Then these two equally sized
+        layers are exported as a GEOTIFF and geojson layer. It is critical that both
+        files respect the same exact geographical boundaries, otherwise there will be
+        misalignments when the images are sliced.
+
+        Note that the mask and source tiff file do not need to be in the same EPSG or
+        coordinate projection. Because both files are converted to PNG files for slicing,
+        the projection does not matter.
+
+        Examples:
+
+        Commandline app:\n
+        >>> geotiff-slicer --sourcetiff file1.tif --sourcemask file1.geojson --size 512
+
+        Invoke interactive mode:\n
+        >>> geotiff-slicer
+
         """
 
     chopper(sourcetiff, sourcemask, size)
@@ -84,12 +104,13 @@ def chopper(sourcetiff, sourcemask, size):
                    options=options_string)
 
     print('[INFO] Beginning the image slicing process.')
-    img_chopper(tmp_imagefilename,
-                tmp_masksfilename,
-                img_master_directory,
-                prefix=img_prefix,
-                height=size,
-                width=size)
+    max_height, max_width = img_chopper(tmp_imagefilename,
+                                        tmp_masksfilename,
+                                        img_master_directory,
+                                        prefix=img_prefix,
+                                        height=size,
+                                        width=size)
+    print(f"max height slices: {max_height}, max width slices: {max_width}")
 
     print('[INFO] Complete slicing image.')
     print('[INFO] Cleaning up files.')
@@ -165,7 +186,7 @@ def img_chopper(img, label,
                 except:
                     pass
     csv_export.to_csv(os.path.join(csv_dir, f'{prefix}' + '_data_index.csv'), header=True)
-
+    return (image_max_height, image_max_width)
 
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover

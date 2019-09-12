@@ -27,6 +27,12 @@ def main(sourcetiff, target_resolution):
     new GEOTIFF file to the source directory.
 
     This tool will preserve the original projection of the image.
+
+    Commandline app:\n
+    >>> geotiff-resampler --sourcetiff file1.tif --target_resolution 0.15
+
+    Invoke interactive mode:\n
+    >>> geotiff-resampler
     """
 
     resampler(sourcetiff, target_resolution)

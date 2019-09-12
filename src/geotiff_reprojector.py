@@ -21,6 +21,12 @@ def main(sourcetiff, target_epsg='EPSG:4326'):
         The user enters the source GEOTIFF filename, and a valid target EPSG projection.
         The file is output to the same directory as the source file. The new file is
         also compressed with JPEG compression to keep the file size manageable.
+
+        Commandline app:\n
+        >>> geotiff-reprojector --sourcetiff file1.tif --target_epsg 'EPSG:4326'
+
+        Invoke interactive mode:\n
+        >>> geotiff-reprojector
         """
 
     reprojector(sourcetiff, target_epsg)
