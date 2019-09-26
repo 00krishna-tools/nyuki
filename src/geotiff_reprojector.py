@@ -78,7 +78,7 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
                     src_crs=src.crs,
                     dst_transform=transform,
                     dst_crs=target_epsg,
-                    resampling=Resampling.cubic)
+                    resampling=Resampling.nearest)
 
     click.echo('[INFO] Task complete.')
 
