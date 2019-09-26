@@ -73,7 +73,7 @@ def chopper(sourcetiff, sourcemask, size):
     click.echo(f"source epsg: {raster.crs}")
     click.echo(f"masks epsg: {buildings.crs['init'].upper()}")
 
-    if raster.crs.upper().strip() != buildings.crs['init'].upper().strip():
+    if str(raster.crs).upper().strip() != buildings.crs['init'].upper().strip():
         click.echo(f'The image and masks files must be in the same coordinate projection. \n Please convert the files so that the coordinate projections match.\n')
 
     # filenames for temporary files
