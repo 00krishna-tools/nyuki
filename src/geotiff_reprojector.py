@@ -67,6 +67,8 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
             'compress': 'JPEG'
         })
 
+
+
         with rasterio.open(targetfile, 'w', **kwargs) as dst:
             for i in range(1, src.count + 1):
                 reproject(
@@ -76,7 +78,7 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
                     src_crs=src.crs,
                     dst_transform=transform,
                     dst_crs=target_epsg,
-                    resampling=Resampling.nearest)
+                    resampling=Resampling.cubic)
 
     click.echo('[INFO] Task complete.')
 
