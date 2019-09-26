@@ -37,6 +37,7 @@ setup(
             'geotiff-resampler=src.geotiff_resampler:main',
             'geotiff-reprojector=src.geotiff_reprojector:main',
             'geotiff-slicer=src.geotiff_chopper:main',
+            'vector-reprojector=src.vector_reprojector:main'
         ],
     },
     install_requires=requirements,

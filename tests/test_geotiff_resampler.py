@@ -6,7 +6,8 @@
 import pytest
 from click.testing import CliRunner
 from src import geotiff_resampler
-
+from src import geotiff_chopper
+from src import geotiff_reprojector
 
 @pytest.fixture
 def response():
