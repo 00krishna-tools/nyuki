@@ -9,7 +9,7 @@ import geopandas as gpd
 @click.command()
 @click.option('--sourcefile', required=True, type=click.Path(exists=True),
               prompt="Source file path",
-              help="Enter the path to the original GEOTIFF raster image")
+              help="Enter the path to the original GEOJSON or vector file")
 @click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
               prompt="Target coordinate EPSG",
               help="Enter the coordinate projection to apply to the raster image.")
@@ -34,6 +34,7 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
 
     # load file to get epsg info.
     buildings = gpd.read_file(sourcefile)
+    buildings = buildings[buildings.geometry.notnull()]
     buildings = buildings[~buildings.is_empty]
     # create new target filename
     targetfile = os.path.basename(sourcefile).split('.')[0] \
