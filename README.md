@@ -105,12 +105,11 @@ Add additional notes about how to deploy this on a live system.
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
 ## ✍️ Authors <a name = "authors"></a>
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@00krishna](https://github.com/00krishna) - krishna bhogaonker
 
 See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [@kylelobo](https://github.com/kylelobo) - README design
+- [@audreyr](https://github.com/audreyr/cookiecutter-pypackage) - Package skeleton designed using `cookiecutter`
 
