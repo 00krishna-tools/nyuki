@@ -45,7 +45,7 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
     click.echo("Application Settings:\n")
     click.echo(f"source filename: {sourcefile}")
     click.echo(f"target filename: {targetfile}")
-    click.echo(f"source epsg: {buildings.crs['init']}")
+    click.echo(f"source epsg: {buildings.crs}")
     click.echo(f"target epsg: {target_epsg}\n")
 
     click.confirm('Are you ready to proceed?',
