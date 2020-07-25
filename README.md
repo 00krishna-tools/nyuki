@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://imgur.com/laWENJw" alt="Project logo"></a>
+ <img width=200px height=200px src="https://imgur.com/laWENJw.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Nyuki: Your Handy Geotiff Toolkit</h3>
