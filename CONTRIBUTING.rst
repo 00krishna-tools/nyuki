@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/00krishna/geotiff_resampler/issues.
+Report bugs at https://github.com/00krishna/nyuki/issues.
 
 If you are reporting a bug, please include:
 
@@ -38,14 +38,14 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-geotiff_resampler could always use more documentation, whether as part of the
-official geotiff_resampler docs, in docstrings, or even on the web in blog posts,
+Nyuki could always use more documentation, whether as part of the
+official Nyuki docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/00krishna/geotiff_resampler/issues.
+The best way to send feedback is to file an issue at https://github.com/00krishna/nyuki/issues.
 
 If you are proposing a feature:
 
@@ -57,17 +57,17 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `geotiff_resampler` for local development.
+Ready to contribute? Here's how to set up `Nyuki` for local development.
 
-1. Fork the `geotiff_resampler` repo on GitHub.
+1. Fork the `Nyuki` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/geotiff_resampler.git
+    $ git clone git@github.com:your_name_here/nyuki.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv geotiff_resampler
-    $ cd geotiff_resampler/
+    $ mkvirtualenv nyuki
+    $ cd nyuki/
     $ python setup.py develop
 
 4. Create a branch for local development::
@@ -79,7 +79,7 @@ Ready to contribute? Here's how to set up `geotiff_resampler` for local developm
 5. When you're done making changes, check that your changes pass flake8 and the
    tests, including testing other Python versions with tox::
 
-    $ flake8 geotiff_resampler tests
+    $ flake8 nyui tests
     $ python setup.py test or py.test
     $ tox
 
@@ -102,8 +102,8 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 2.7, 3.4, 3.5 and 3.6, and for PyPy. Check
-   https://travis-ci.org/00krishna/geotiff_resampler/pull_requests
+3. The pull request should work for Python 3.4, 3.5 and 3.6, and for PyPy. Check
+   https://travis-ci.org/00krishna/nyuki/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips
@@ -111,7 +111,7 @@ Tips
 
 To run a subset of tests::
 
-$ py.test tests.test_geotiff_resampler
+$ py.test tests.test_nyuki
 
 
 Deploying
