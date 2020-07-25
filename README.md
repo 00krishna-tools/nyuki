@@ -14,8 +14,8 @@
 
 ---
 
-<p align="justified"> "Nyuki" means bee in Swahili, but it is also the word used 
-                   for aerial drones. While working on a collaboration between 
+<p align="justified"> "Nyuki" translates to "bee" in Swahili, but is also the word used 
+                   to refer to aerial drones. While working on a collaboration between 
                    <a href="https://www.datakind.org/">DataKind</a> and 
                    <a href="https://werobotics.org/">WeRobotics</a>
                    using drone imagery for flood damage assessment, we found it 
