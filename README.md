@@ -18,7 +18,7 @@
                    for aerial drones. While working on a collaboration between 
                    [DataKind](https://www.datakind.org/) and [WeRobotics](https://werobotics.org/)
                    using drone imagery for flood damage assessment, we found it 
-                   really hard to do simple manipulations to large geotiff image
+                   really hard to do simple manipulations to large geotiff image and vector
                    files. Something as simple as resizing an image took 15-20 lines 
                    complicated code. Hence we designed Nyuki to help turn these cumbersome 
                    tasks into one-line commands. We started with a few common 
@@ -26,7 +26,7 @@
                    give us a star if you like our tool.
                    
 
-    <br> 
+
 </p>
 
 ## 📝 Table of Contents
@@ -41,7 +41,11 @@
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-Write about 1-2 paragraphs describing the purpose of your project.
+Nyuki is a command line tool that simplifies common and easy image processing tasks. The tools implemented so far include:
+
+* Reprojecting geotiff and vector files
+* Resampling geotiff files to higher or lower resolution
+* Compressing geotiff files to save space
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
