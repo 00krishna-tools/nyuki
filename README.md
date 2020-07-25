@@ -16,7 +16,8 @@
 
 <p align="justified"> "Nyuki" means bee in Swahili, but it is also the word used 
                    for aerial drones. While working on a collaboration between 
-                   [DataKind](https://www.datakind.org/) and [WeRobotics](https://werobotics.org/)
+                   <a href="https://www.datakind.org/">DataKind</a> and 
+                   <a href="https://werobotics.org/">WeRobotics</a>
                    using drone imagery for flood damage assessment, we found it 
                    really hard to do simple manipulations to large geotiff image and vector
                    files. Something as simple as resizing an image took 15-20 lines 
