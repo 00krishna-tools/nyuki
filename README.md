@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=365px height=200px src="https://imgur.com/laWENJw.png" alt="Project logo"></a>
+ <img width=365px height=200px src="https://imgur.com/laWENJw.png" alt="Nyuki: Geotiff Toolkit"></a>
 </p>
 
 <h3 align="center">Nyuki: Your Handy Geotiff Toolkit</h3>
@@ -15,9 +15,16 @@
 ---
 
 <p align="center"> "Nyuki" means bee in Swahili, but it is also the word used 
-                   for aerial drones. We developed Nyuki while working on a 
-                   philanthropic collaboration between DataKind and WeRobotics.
-                   
+                   for aerial drones. While working on a collaboration between 
+                   [DataKind](https://www.datakind.org/) and [WeRobotics](https://werobotics.org/)
+                   using drone imagery for flood damage assessment, we found it 
+                   really hard to do simple manipulations to large geotiff imagery
+                   files. Anyone who has worked with geospatial images knows 
+                   that it can take 15 or 20 lines of code just to resize an
+                   image. Hence we designed Nyuki to help turn these cumbersome 
+                   tasks into one-line commands. We started with a few common 
+                   operations, but contributions are always welcome. Also please
+                   give us a star if you like our tool.
                    
 
     <br> 
