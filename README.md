@@ -14,16 +14,15 @@
 
 ---
 
-<p align="center"> "Nyuki" means bee in Swahili, but it is also the word used 
+<p align="justified"> "Nyuki" means bee in Swahili, but it is also the word used 
                    for aerial drones. While working on a collaboration between 
                    [DataKind](https://www.datakind.org/) and [WeRobotics](https://werobotics.org/)
                    using drone imagery for flood damage assessment, we found it 
-                   really hard to do simple manipulations to large geotiff imagery
-                   files. Anyone who has worked with geospatial images knows 
-                   that it can take 15 or 20 lines of code just to resize an
-                   image. Hence we designed Nyuki to help turn these cumbersome 
+                   really hard to do simple manipulations to large geotiff image
+                   files. Something as simple as resizing an image took 15-20 lines 
+                   complicated code. Hence we designed Nyuki to help turn these cumbersome 
                    tasks into one-line commands. We started with a few common 
-                   operations, but contributions are always welcome. Also please
+                   operations but hope to expand. Contributions are always welcome. Also please
                    give us a star if you like our tool.
                    
 
