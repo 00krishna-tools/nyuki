@@ -31,13 +31,11 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description="This package takes a geotiff file and resamples it to a new resolution. The user enters the path to the file and the resampling factor, and the package outputs the new file. ",
+    description="This command line tool will reproject, resample, and perform other manipulations on geotiff raster and vector files. ",
     entry_points={
         'console_scripts': [
-            'geotiff-resampler=src.geotiff_resampler:main',
-            'geotiff-reprojector=src.geotiff_reprojector:main',
-            'geotiff-slicer=src.geotiff_chopper:main',
-            'vector-reprojector=src.vector_reprojector:main'
+            'nyuki=src.nyuki:nyuki',
+            'geotiff-slicer=src.geotiff_chopper:main'
         ],
     },
     install_requires=requirements,

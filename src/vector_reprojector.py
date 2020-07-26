@@ -27,10 +27,10 @@ def main(sourcefile, target_epsg='EPSG:4326'):
         >>> vector-reprojector
         """
 
-    reprojector(sourcefile, target_epsg)
+    vreprojector(sourcefile, target_epsg)
     return 0
 
-def reprojector(sourcefile, target_epsg='EPSG:4326'):
+def vreprojector(sourcefile, target_epsg='EPSG:4326'):
 
     # load file to get epsg info.
     buildings = gpd.read_file(sourcefile)
