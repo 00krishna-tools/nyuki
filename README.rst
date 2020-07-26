@@ -1,42 +1,42 @@
-.. raw:: html
-<p align="center">
-  <a href="" rel="noopener">
- <img width=365px height=200px src="https://imgur.com/laWENJw.png" alt="Nyuki: Geotiff Toolkit"></a>
-</p>
 
-<h3 align="center">Nyuki: Your Handy Geotiff Toolkit</h3>
-
-<div align="center">
-
-  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
-
----
-
-<p align="justified"> "Nyuki" translates to "bee" in Swahili, but is also the word used 
-                   to refer to aerial drones. While working on a collaboration between 
-                   <a href="https://www.datakind.org/">DataKind</a> and 
-                   <a href="https://werobotics.org/">WeRobotics</a>
-                   using drone imagery for flood damage assessment, we found it 
-                   really hard to do simple manipulations to large geotiff image and vector
-                   files. Something as simple as resizing an image took 15-20 lines 
-                   complicated code. Hence we designed Nyuki to help turn these cumbersome 
-                   tasks into one-line commands. We started with a few common 
-                   operations but hope to expand. Contributions are always welcome. Also please
-                   give us a star if you like our tool.
-                   
+.. image:: https://imgur.com/laWENJw.png
+        :width: 365px
+        :align: center
+        :height: 200px
 
 
-</p>
 
-.. raw:: html
 
+
+
+Nyuki: Your Handy Geotiff Toolkit
+=================================
+
+.. image:: https://img.shields.io/pypi/v/shatterstar.svg
+        :target: https://pypi.python.org/pypi/shatterstar
+
+.. image:: https://img.shields.io/badge/status-active-success.svg
+
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+
+
+
+
+
+"Nyuki" translates to "bee" in Swahili, but is also the word used 
+to refer to aerial drones. While working on a collaboration between 
+[DataKind](https://www.datakind.org/) and [WeRobotics](https://werobotics.org/)
+using drone imagery for flood damage assessment, we found it 
+really hard to do simple manipulations to large geotiff image and vector
+files. Something as simple as resizing an image took 15-20 lines 
+complicated code. Hence we designed Nyuki to help turn these cumbersome 
+tasks into one-line commands. We started with a few common 
+operations but hope to expand. Contributions are always welcome. Also please
+give us a star if you like our tool.
 
 
 📝 Table of Contents
--------------------
+--------------------
 
 -  `About <#about>`__
 -  `Getting Started <#getting_started>`__
@@ -153,7 +153,4 @@ who participated in this project.
 -  [@audreyr](https://github.com/audreyr/cookiecutter-pypackage) -
    Package skeleton designed using ``cookiecutter``
 
-.. |Status| image:: https://img.shields.io/badge/status-active-success.svg
-   :target: 
-.. |License| image:: https://img.shields.io/badge/license-MIT-blue.svg
-   :target: /LICENSE
+
