@@ -9,6 +9,8 @@ from .geotiff_resampler import resampler
 from .geotiff_reprojector import reprojector
 from .vector_reprojector import vreprojector
 from .geotiff_compressor import compressor
+from .geotiff_info import information as rinformation
+
 
 @click.group()
 def nyuki():
@@ -94,6 +96,7 @@ def reproject(sourcetiff, target_epsg='EPSG:4326'):
     reprojector(sourcetiff, target_epsg)
     return 0
 
+
 @raster.command()
 @click.option('--sourcetiff', required=True, type=click.Path(exists=True),
               prompt="Source file path",
@@ -129,6 +132,30 @@ def compress(sourcetiff, target_compression='LZW'):
 
     compressor(sourcetiff, target_compression)
     return 0
+
+
+@raster.command()
+@click.option('--sourcetiff', type=click.Path(exists=True), required=True,
+              prompt="Enter the path and filename of the source file",
+              help="Path to the original GEOTIFF raster image")
+def rinfo(sourcetiff):
+    """Raster metadata and information tool.
+
+    This tool provides metadata about a raster image, including the file's
+    coordinate project, resolution, pixel size, number of bands, data types,
+    etc. The tool provides the same information found in `gdalinfo` but in
+    a friendlier form for reading.
+
+    Commandline app:\n
+    >>> geotiff_info --sourcetiff file1.tif
+
+    Invoke interactive mode:\n
+    >>> geotiff_info
+    """
+
+    rinformation(sourcetiff)
+    return 0
+
 
 
 @vector.command()
