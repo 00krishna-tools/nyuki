@@ -12,11 +12,13 @@ from rasterio.warp import calculate_default_transform, reproject, Resampling
 @click.option('--sourcetiff', required=True, type=click.Path(exists=True),
               prompt="Source file path",
               help="Enter the path to the original GEOTIFF raster image")
-@click.option('--target_compression', default='lzw', show_default=True, type=str,
+@click.option('--target_compression', default='LZW', show_default=True,
+              type=click.Choice(['LZW', 'LZMA', 'LERC', 'JPEG', 'JPEG2000',
+                                 'DEFLATE', 'WEBP', 'ZSTD', 'NONE'], case_sensitive=True),
               prompt="Target compression method",
               help="Enter the compression standard to apply to the raster.")
-def main(sourcetiff, target_compression='lzw'):
-    """Application: Geotiff Compressor.
+def main(sourcetiff, target_compression='LZW'):
+    """Compress Geotiff raster files to shrink file size.
 
        This tool will compress a Geotiff raster image using the specified compression
        method. The supported methods are LZW, LZMA, JPEG, and JPEG2000 standards.
@@ -42,7 +44,7 @@ def main(sourcetiff, target_compression='lzw'):
     compressor(sourcetiff, target_compression)
     return 0
 
-def compressor(sourcefile, target_compression='lzw'):
+def compressor(sourcefile, target_compression='LZW'):
 
     # load file to get info.
     dat = rasterio.open(sourcefile)
@@ -78,7 +80,7 @@ def compressor(sourcefile, target_compression='lzw'):
     # specify compression standard
         profile.update(
             compress=target_compression,
-            BIGTIFF = "YES")
+            BIGTIFF = "IF_SAFER")
         
         with rasterio.open(targetfile, 'w', **profile) as dst:
             for ji, window in dat.block_windows(1):
