@@ -3,7 +3,7 @@
  <img width=365px height=200px src="https://imgur.com/laWENJw.png" alt="Nyuki: Geotiff Toolkit"></a>
 </p>
 
-<h3 align="center">Nyuki: Your Handy Geotiff Toolkit</h3>
+<h3 align="center">Nyuki: The Geospatial Toolkit for Humans</h3>
 
 <div align="center">
 
