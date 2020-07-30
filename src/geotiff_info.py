@@ -11,6 +11,8 @@ from rasterio import Affine, MemoryFile
 from rasterio.enums import Resampling
 from osgeo import gdal
 import geopandas as gpd
+from .utilities import get_file_type
+
 
 @click.command()
 @click.option('--sourcefile', type=click.Path(exists=True), required=True,
@@ -67,23 +69,6 @@ def v_information(sourcefile):
     click.echo(f"\t Coordinate projection: {dat.crs}")
 
 
-def get_file_type(filename):
-
-
-    ds = gdal.OpenEx(filename)
-    try:
-        metadata = ds.GetDriver().GetMetadata()
-    except:
-        print(filename, 'File invalid, please specify either a vector or raster file.')
-    else:
-        raster_capable = 'DCAP_RASTER' in metadata
-        vector_capable = 'DCAP_VECTOR' in metadata
-
-
-    if raster_capable:
-        return('raster')
-    else:
-        return('vector')
 
 
 

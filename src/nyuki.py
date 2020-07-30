@@ -10,7 +10,7 @@ from .geotiff_reprojector import reprojector
 from .vector_reprojector import vreprojector
 from .geotiff_compressor import compressor
 from .geotiff_info import information
-
+from .utilities import get_file_type
 
 @click.group()
 def nyuki():
@@ -101,7 +101,7 @@ def resample(sourcetiff, target_resolution):
 @click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
               prompt="Target coordinate EPSG",
               help="Enter the coordinate projection to apply to the raster image.")
-def rreproject(sourcetiff, target_epsg='EPSG:4326'):
+def reproject(sourcetiff, target_epsg='EPSG:4326'):
     """Reproject a Geotiff file to a new coordinate projection.
 
         This tool will reproject a raster image to a different EPSG coordinate projection.
@@ -166,7 +166,7 @@ def compress(sourcetiff, target_compression='LZW'):
 @click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
               prompt="Target coordinate EPSG",
               help="Enter the coordinate projection to apply to the raster image.")
-def vreproject(sourcefile, target_epsg='EPSG:4326'):
+def reproject(sourcefile, target_epsg='EPSG:4326'):
     """Reproject a vector file to a new coordinate system.
 
         This tool will reproject a vector file to a different EPSG coordinate projection.
@@ -179,7 +179,6 @@ def vreproject(sourcefile, target_epsg='EPSG:4326'):
         Invoke interactive mode:\n
         >>> nyuki vector reproject
         """
-
     vreprojector(sourcefile, target_epsg)
     return 0
 

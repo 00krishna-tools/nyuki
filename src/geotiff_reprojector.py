@@ -64,7 +64,8 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
             'transform': transform,
             'width': width,
             'height': height,
-            'compress': 'JPEG'
+            'compress': 'LZW',
+            'BIGTIFF' : 'IF_SAFER'
         })
 
 
