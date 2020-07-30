@@ -9,13 +9,14 @@ import numpy as np
 import rasterio
 from rasterio import Affine, MemoryFile
 from rasterio.enums import Resampling
-
+from osgeo import gdal
+import geopandas as gpd
 
 @click.command()
-@click.option('--sourcetiff', type=click.Path(exists=True), required=True,
+@click.option('--sourcefile', type=click.Path(exists=True), required=True,
               prompt="Enter the path and filename of the source file",
               help="Path to the original GEOTIFF raster image")
-def info(sourcetiff):
+def info(sourcefile):
     """Raster metadata and information tool.
 
     This tool provides metadata about a raster image, including the file's
@@ -30,11 +31,19 @@ def info(sourcetiff):
     >>> geotiff_info
     """
 
-    information(sourcetiff)
+    information(sourcefile)
     return 0
 
 
 def information(sourcefile):
+
+    if get_file_type(sourcefile) == 'raster':
+        r_information(sourcefile)
+    else:
+        v_information(sourcefile)
+
+
+def r_information(sourcefile):
 
     dat = rasterio.open(sourcefile)
 
@@ -46,5 +55,37 @@ def information(sourcefile):
     click.echo(f"\t Pixel size: {(round(dat.res[0], 3), round(dat.res[1], 3))}")
     click.echo(f"\t Number of Bands: {dat.profile['count']}")
     click.echo(f"\t Data type per band: {dat.dtypes}")
-    click.echo(f"\t Compression: {dat.profile['compress']}")
+    click.echo(f"\t Compression: {dat.profile.get('compress', 'Uncompressed')}")
     click.echo(f"\t Nodata character: {dat.profile['nodata']}")
+
+
+def v_information(sourcefile):
+
+    dat = gpd.read_file(sourcefile)
+
+    click.echo(f"\n \t File info for: {sourcefile}: \n")
+    click.echo(f"\t Coordinate projection: {dat.crs}")
+
+
+def get_file_type(filename):
+
+
+    ds = gdal.OpenEx(filename)
+    try:
+        metadata = ds.GetDriver().GetMetadata()
+    except:
+        print(filename, 'File invalid, please specify either a vector or raster file.')
+    else:
+        raster_capable = 'DCAP_RASTER' in metadata
+        vector_capable = 'DCAP_VECTOR' in metadata
+
+
+    if raster_capable:
+        return('raster')
+    else:
+        return('vector')
+
+
+
+if __name__ == "__main__":
+    sys.exit(info())  # pragma: no cover

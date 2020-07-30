@@ -60,7 +60,7 @@ def compressor(sourcefile, target_compression='LZW'):
     click.echo(f"source filename: {sourcefile}")
     click.echo(f"target filename: {targetfile}")
     click.echo(f"source datatype: {dat.dtypes}")
-    click.echo(f"source current compression: {profile.get('compress', 'Uncompressed')}")
+    click.echo(f"source current compression: {dat.profile.get('compress', 'Uncompressed')}")
     click.echo(f"target epsg: {target_compression}\n")
 
 

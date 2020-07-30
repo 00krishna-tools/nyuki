@@ -9,7 +9,7 @@ from .geotiff_resampler import resampler
 from .geotiff_reprojector import reprojector
 from .vector_reprojector import vreprojector
 from .geotiff_compressor import compressor
-from .geotiff_info import information as rinformation
+from .geotiff_info import information
 
 
 @click.group()
@@ -42,6 +42,29 @@ def raster():
     These tools process Geotiff raster files.
     """
     pass
+
+
+@nyuki.command()
+@click.option('--sourcefile', type=click.Path(exists=True), required=True,
+              prompt="Enter the path and filename of the source file",
+              help="Path to the original GEOTIFF raster image")
+def info(sourcefile):
+    """Raster metadata and information tool.
+
+    This tool provides metadata about a raster image, including the file's
+    coordinate project, resolution, pixel size, number of bands, data types,
+    etc. The tool provides the same information found in `gdalinfo` but in
+    a friendlier form for reading.
+
+    Commandline app:\n
+    >>> geotiff_info --sourcetiff file1.tif
+
+    Invoke interactive mode:\n
+    >>> geotiff_info
+    """
+
+    information(sourcefile)
+    return 0
 
 @raster.command()
 @click.option('--sourcetiff', type=click.Path(exists=True), required=True,
@@ -78,7 +101,7 @@ def resample(sourcetiff, target_resolution):
 @click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
               prompt="Target coordinate EPSG",
               help="Enter the coordinate projection to apply to the raster image.")
-def reproject(sourcetiff, target_epsg='EPSG:4326'):
+def rreproject(sourcetiff, target_epsg='EPSG:4326'):
     """Reproject a Geotiff file to a new coordinate projection.
 
         This tool will reproject a raster image to a different EPSG coordinate projection.
@@ -134,28 +157,6 @@ def compress(sourcetiff, target_compression='LZW'):
     return 0
 
 
-@raster.command()
-@click.option('--sourcetiff', type=click.Path(exists=True), required=True,
-              prompt="Enter the path and filename of the source file",
-              help="Path to the original GEOTIFF raster image")
-def rinfo(sourcetiff):
-    """Raster metadata and information tool.
-
-    This tool provides metadata about a raster image, including the file's
-    coordinate project, resolution, pixel size, number of bands, data types,
-    etc. The tool provides the same information found in `gdalinfo` but in
-    a friendlier form for reading.
-
-    Commandline app:\n
-    >>> geotiff_info --sourcetiff file1.tif
-
-    Invoke interactive mode:\n
-    >>> geotiff_info
-    """
-
-    rinformation(sourcetiff)
-    return 0
-
 
 
 @vector.command()
@@ -165,7 +166,7 @@ def rinfo(sourcetiff):
 @click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
               prompt="Target coordinate EPSG",
               help="Enter the coordinate projection to apply to the raster image.")
-def reproject(sourcefile, target_epsg='EPSG:4326'):
+def vreproject(sourcefile, target_epsg='EPSG:4326'):
     """Reproject a vector file to a new coordinate system.
 
         This tool will reproject a vector file to a different EPSG coordinate projection.
@@ -179,7 +180,7 @@ def reproject(sourcefile, target_epsg='EPSG:4326'):
         >>> nyuki vector reproject
         """
 
-    vector_reprojector(sourcefile, target_epsg)
+    vreprojector(sourcefile, target_epsg)
     return 0
 
 
