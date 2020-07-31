@@ -1,55 +1,67 @@
+{% set version = "v0.0.1" %}
+
 package:
-  name: pyugend2
-  version: "0.1.0"
+  name: nyuki
+  version: {{ version }}
 
 source:
-   git_url: https://github.com/university-gender-evolution/pyugend2.git
-
+  url: https://github.com/00krishna-tools/nyuki/archive/{{ version }}.tar.gz
+  sha1: fcb8ca94e13b340405bef7464e687409934043a4
 build:
-  # noarch_python: True
-  # preserve_egg_dir: True
+  number: 1
+  string: testRelease
+  skip: true  # [win and py27]
   entry_points:
-    # Put any entry points (scripts to be generated automatically) here. The
-    # syntax is module:function.  For example
-    #
-    # - cookiecutter = cookiecutter:main
-    #
-    # Would create an entry point called cookiecutter that calls cookiecutter.main()
-
-  # If this is a new build for the same version, increment the build
-  # number. If you do not include this key, it defaults to 0.
-  # number: 1
-
+    - nyuki = nyuki.src.nyuki:nyuki
+  osx_is_app: True
 requirements:
-  build:
+    - git
+  host:
     - python
+    - pip
     - numpy
     - pandas
-    - docopt
-    - matplotlib
-    - pytest
-    - pytest-runner
+    - rasterio
+    - click >=6
+    - contextlib
+    - os
+    - sys
+    - tqdm
+    - geopandas
+    - Pillow
+
   run:
     - python
     - numpy
     - pandas
-    - docopt
-    - matplotlib
-    - pytest
-    - pytest-runner
-  # You can also put a file called run_test.py in the recipe that will be run
-  # at test time.
+    - rasterio
+    - click >=6
+    - contextlib
+    - os
+    - sys
+    - tqdm
+    - geopandas
+    - Pillow
+    - enum34  # [py<34]
 
-  # requires:
-    # Put any additional test requirements here.  For example
-    # - nose
+test:
+  requires:
+    - pip
+    - pytest >=2.8.2
+    - pytest-cov >=2.2.0
+    - ipython >=2.0
+  files:
+  imports:
+    - nyuki
+  commands:
 
 about:
-  home: https://github.com/audreyr/cookiecutter
-  license: MIT License
-  summary: 'This package runs simulations on the evolution of gender balance
-  in university departments.'
+  home: https://github.com/00krishna-tools/nyuki
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Nyuki is a geospatial toolkit that creates human readable interfaces to complex geospatial libraries.
 
-# See
-# http://docs.continuum.io/conda/build.html for
-# more information about meta.yaml
+extra:
+  recipe-maintainers:
+    - 00krishna
+
