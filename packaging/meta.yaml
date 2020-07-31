@@ -21,21 +21,21 @@ requirements:
     - python
     - pip
     - numpy >=1.18.5
-    - pandas >=1.0.5
-    - rasterio >=1.1.0
+    - pandas
+    - rasterio
     - click >=6
     - tqdm
-    - geopandas >=0.8.1
+    - geopandas
     - Pillow
 
   run:
     - python
     - numpy >=1.18.5
-    - pandas >= 1.0.5
-    - rasterio >=1.1.0
+    - pandas
+    - rasterio
     - click >=6
     - tqdm
-    - geopandas >=0.8.1
+    - geopandas
     - Pillow
     - enum34  # [py<34]
 
