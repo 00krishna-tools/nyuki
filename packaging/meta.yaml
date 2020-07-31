@@ -27,6 +27,7 @@ requirements:
     - tqdm
     - geopandas
     - Pillow
+    - tox
 
   run:
     - python
