@@ -16,35 +16,37 @@ build:
 requirements:
   build:
     - git
+    - python
 
   host:
     - python
-    - pip
+#   - pip
     - numpy >=1.18.5
-    - pandas
-    - rasterio
-    - click >=6
-    - tqdm
-    - geopandas
-    - Pillow
+    - pytest-runner
+#   - pandas
+#   - rasterio
+#   - click >=6
+#   - tqdm
+#   - geopandas
+#   - Pillow
 
   run:
-    - python
-    - numpy >=1.18.5
-    - pandas
-    - rasterio
-    - click >=6
-    - tqdm
-    - geopandas
-    - Pillow
-    - enum34  # [py<34]
+#    - python
+#    - numpy >=1.18.5
+#    - pandas
+#    - rasterio
+#    - click >=6
+#    - tqdm
+#    - geopandas
+#    - Pillow
+#    - enum34  # [py<34]
 
 test:
   requires:
-    - pip
+#    - pip
   files:
   imports:
-    - nyuki
+#    - nyuki
   commands:
 
 about:
