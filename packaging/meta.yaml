@@ -3,7 +3,7 @@ package:
   version: "v0.0.1"
 
 source:
-  url: https://github.com/00krishna-tools/nyuki/archive/v0.0.1.tar.gz
+  url: https://github.com/00krishna-tools/nyuki
 
 build:
   noarch: python
