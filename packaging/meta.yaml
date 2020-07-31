@@ -1,55 +1,47 @@
-{% set version = "v0.0.1" %}
-
 package:
   name: nyuki
-  version: {{ version }}
+  version: "v0.0.1"
 
 source:
-  url: https://github.com/00krishna-tools/nyuki/archive/{{ version }}.tar.gz
-  sha1: fcb8ca94e13b340405bef7464e687409934043a4
+  url: https://github.com/00krishna-tools/nyuki/archive/v0.0.1.tar.gz
+
 build:
+  noarch: python
   number: 1
   string: testRelease
   skip: true  # [win and py27]
   entry_points:
     - nyuki = nyuki.src.nyuki:nyuki
-  osx_is_app: True
+
 requirements:
+  build:
     - git
+
   host:
     - python
     - pip
-    - numpy
-    - pandas
-    - rasterio
+    - numpy >=1.18.5
+    - pandas >=1.0.5
+    - rasterio >=1.1.0
     - click >=6
-    - contextlib
-    - os
-    - sys
     - tqdm
-    - geopandas
+    - geopandas >=0.8.1
     - Pillow
 
   run:
     - python
-    - numpy
-    - pandas
-    - rasterio
+    - numpy >=1.18.5
+    - pandas >= 1.0.5
+    - rasterio >=1.1.0
     - click >=6
-    - contextlib
-    - os
-    - sys
     - tqdm
-    - geopandas
+    - geopandas >=0.8.1
     - Pillow
     - enum34  # [py<34]
 
 test:
   requires:
     - pip
-    - pytest >=2.8.2
-    - pytest-cov >=2.2.0
-    - ipython >=2.0
   files:
   imports:
     - nyuki
@@ -64,4 +56,3 @@ about:
 extra:
   recipe-maintainers:
     - 00krishna
-
