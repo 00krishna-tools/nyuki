@@ -14,10 +14,10 @@ build:
 requirements:
   build:
     - git
-    - python >=3.6
+    - python {{ python }}
 
   host:
-    - python >=3.6
+    - python {{ python }}
     - pip
     - numpy >=1.18.5
     - pytest-runner
@@ -31,7 +31,7 @@ requirements:
 #    - gdal=2.4.4
 
   run:
-    - python >=3.6
+    - python {{ python }}
     - numpy >=1.18.5
     - pandas
     - rasterio
