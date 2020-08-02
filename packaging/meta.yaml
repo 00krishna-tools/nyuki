@@ -9,7 +9,7 @@ build:
   number: 1
   string: testRelease
   entry_points:
-    - nyuki = nyuki.src.nyuki:nyuki
+    - nyuki = src.nyuki:nyuki
 
 requirements:
   build:
