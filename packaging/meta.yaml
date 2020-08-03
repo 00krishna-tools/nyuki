@@ -28,7 +28,7 @@ requirements:
     - geopandas
     - Pillow
     - libwebp
-#    - gdal=2.4.4
+
 
   run:
     - python {{ python }}
@@ -41,7 +41,7 @@ requirements:
     - Pillow
     - libwebp
     - enum34  # [py<34]
-#    - gdal=2.4.4
+
 
 test:
   requires:
