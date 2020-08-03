@@ -6,7 +6,7 @@
 import pytest
 
 
-def test_demo():
+def test_compress():
     print('hello')
     assert 1 == 1
 
