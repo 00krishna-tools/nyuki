@@ -33,7 +33,7 @@ setup(
     entry_points={
         'console_scripts': [
             'nyuki=nyuki.nyuki:nyuki',
-            'geotiff-slicer=src.geotiff_chopper:main'
+            'geotiff-slicer=nyuki.geotiff_chopper:main'
         ],
     },
     install_requires=requirements,
