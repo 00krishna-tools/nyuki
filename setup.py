@@ -41,7 +41,7 @@ setup(
     long_description=readme + '\n\n' + history,
     include_package_data=True,
     keywords='src, nyuki',
-    name='src',
+    name='nyuki',
     packages=find_packages(include=['nyuki']),
     setup_requires=setup_requirements,
     test_suite='tests',
