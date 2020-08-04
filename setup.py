@@ -32,7 +32,7 @@ setup(
     description="This command line tool will reproject, resample, and perform other manipulations on geotiff raster and vector files. ",
     entry_points={
         'console_scripts': [
-            'nyuki=src.nyuki:nyuki',
+            'nyuki=nyuki.nyuki:nyuki',
             'geotiff-slicer=src.geotiff_chopper:main'
         ],
     },
@@ -40,7 +40,7 @@ setup(
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='src, nyuki',
+    keywords='nyuki',
     name='nyuki',
     packages=find_packages(include=['nyuki', 'nyuki.*']),
     setup_requires=setup_requirements,
