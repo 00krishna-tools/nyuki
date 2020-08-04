@@ -42,11 +42,11 @@ setup(
     include_package_data=True,
     keywords='src, nyuki',
     name='nyuki',
-    packages=find_packages(include=['nyuki']),
+    packages=find_packages(include=['nyuki', 'nyuki.*']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/00krishna-tools/nyuki',
-    version='0.5.0',
+    version='0.0.1',
     zip_safe=False,
 )
