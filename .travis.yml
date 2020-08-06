@@ -33,13 +33,3 @@ after success:
   - conda install codecov
   - codecov
 
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: 00krishna
-  password:
-    secure: PLEASE_REPLACE_ME
-  on:
-    tags: true
-    repo: 00krishna/src
-    python: 3.6
