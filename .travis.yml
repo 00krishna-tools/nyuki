@@ -19,7 +19,8 @@ install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION conda conda-build pytest six pytest-cov pytest-mock 
   - conda activate test-environment
   - conda build packaging/  # add directory if needed.
-  - conda install nyuki --use-local
+  - conda deactivate
+  - conda install -c local nyuki
 
 script:
   - pytest -v --color=yes --cov=cpr tests
