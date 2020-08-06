@@ -9,7 +9,7 @@
 
   [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-  [![Travis](https://travis-ci.org/00krishna-tools/nyuki.svg?branch=master)](/Travis Linux Mac)
+  [![Travis](https://travis-ci.org/00krishna-tools/nyuki.svg?branch=master)](/Travis)
 
 </div>
 
