@@ -1,26 +1,32 @@
-package:
-  name: nyuki
-  version: "v0.0.1"
+# Note: there are many handy hints in comments in this example -- remove them when you've finalized your recipe
 
-source:
-  git_url: https://github.com/00krishna-tools/nyuki
+# Jinja variables help maintain the recipe as you'll update the version only here.
+# Using the name variable with the URL in line 14 is convenient
+# when copying and pasting from another recipe, but not really needed.
+{% set name = "nyuki" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source: 
+  url: https://github.com/00krishna-tools/nyuki/archive/v{{ version }}.tar.gz
+  sha256: 88e943eed59d5ca95d6716b22b47c71a7b7c9323a71348a4623e329bb66d7ae7
 
 build:
-  number: 1
-  string: testRelease
+  noarch: python
+  number: 0
+  skip: true  # [py<36]
   entry_points:
-    - nyuki = src.nyuki:nyuki
+    - nyuki = nyuki.nyuki:nyuki
+#  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
-  build:
-    - git
-    - python {{ python }}
-
   host:
-    - python {{ python }}
+    - python >3.5
     - pip
     - numpy >=1.18.5
-    - pytest-runner
     - pandas
     - rasterio
     - click >=7
@@ -28,10 +34,8 @@ requirements:
     - geopandas
     - Pillow
     - libwebp
-
-
   run:
-    - python {{ python }}
+    - python >3.5
     - numpy >=1.18.5
     - pandas
     - rasterio
@@ -40,22 +44,27 @@ requirements:
     - geopandas
     - Pillow
     - libwebp
-    - enum34  # [py<34]
-
 
 test:
-  requires:
-#    - pip
-  files:
+  # Some packages might need a `test/commands` key to check CLI.
+  # List all the packages/modules that `run_test.py` imports.
   imports:
-#    - nyuki
-  commands:
+    - nyuki
+  requires:
+    - pytest
+    - pytest-runner
 
 about:
   home: https://github.com/00krishna-tools/nyuki
   license: MIT
+  license_family: MIT
   license_file: LICENSE.txt
-  summary: Nyuki is a geospatial toolkit that creates human readable interfaces to complex geospatial libraries.
+  summary: "A geospatial library for humans. "
+
+  # The remaining entries in this section are optional, but recommended.
+  description: "Nyuki: a geospatial library for humans"
+  #doc_url: https://simplejson.readthedocs.io/
+  #dev_url: https://github.com/simplejson/simplejson
 
 extra:
   recipe-maintainers:
