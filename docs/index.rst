@@ -7,6 +7,7 @@ Welcome to geotiff_resampler's documentation!
 
    readme
    installation
+   tutorial
    usage
    modules
    contributing
