@@ -1,4 +1,4 @@
-Welcome to geotiff_resampler's documentation!
+Welcome to Nyuki's documentation!
 ======================================
 
 .. toctree::
