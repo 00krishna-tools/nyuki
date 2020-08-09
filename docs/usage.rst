@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use geotiff_resampler in a project::
+To use nyuki in a project::
 
-    import geotiff_resampler
+    import nyuki
