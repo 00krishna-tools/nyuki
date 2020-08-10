@@ -107,10 +107,9 @@ Add additional notes about how to deploy this on a live system.
 ⛏️ Built Using 
 --------------
 
--  `MongoDB`_ - Database
--  `Express`_ - Server Framework
--  `VueJs`_ - Web Framework
--  `NodeJs`_ - Server Environment
+-  `Click`_ - Command Line Interface
+-  `Rasterio`_ - Geospatial Library for Rasters
+-  `Geopandas`_ Geospatial Library for Vector data  
 
 ✍️ Authors 
 ----------
@@ -129,7 +128,3 @@ See also the list of
 .. _Authors: #authors
 .. _Acknowledgments: #acknowledgement
 .. _deployment: #deployment
-.. _MongoDB: https://www.mongodb.com/
-.. _Express: https://expressjs.com/
-.. _VueJs: https://vuejs.org/
-.. _NodeJs: https://nodejs.org/en/
