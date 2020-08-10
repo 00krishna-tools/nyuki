@@ -44,19 +44,26 @@ your local machine for development and testing purposes. See
 Prerequisites
 ~~~~~~~~~~~~~
 
-What things you need to install the software and how to install them.
+Nyuki relies on the open source Anaconda/Miniconda python distribution for scientific
+computing. Many of the python and C++ libraries that nyuki depends upon are
+difficult to install due to complicated dependencies between package or the
+need to compile C++ files. Hence we chose to use a more robust package
+manager: `conda`. 
 
-::
+Once conda is installed from the following `link <https://www.anaconda.com/products/individual>`_ ,
+the user can create new virtual environments and install packages like nyuki
+into those environments. `Conda` package are stored in different public or
+private channels, depending on whether the developer intends a package for
+public use, or for a limited group of users. Nyuki is currently located in `krishnab75` Anaconda
+channel but will soon be added to the widely `conda-forge` channel. 
 
-   Give examples
 
 Installing
 ~~~~~~~~~~
 
-A step by step series of examples that tell you how to get a development
-env running.
-
-Say what the step will be
+Assuming that the user has successfully installed the Anaconda/miniconda
+python distribution on their computer, the user may install nyuki in a stand-alone
+environment using
 
 ::
 
@@ -114,7 +121,7 @@ Add additional notes about how to deploy this on a live system.
 ✍️ Authors 
 ----------
 
--  [@00krishna](https://github.com/00krishna) - krishna bhogaonker
+-  `@00krishna <https://github.com/00krishna>`_ - krishna bhogaonker
 
 See also the list of
 
