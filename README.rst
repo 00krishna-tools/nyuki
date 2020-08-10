@@ -48,7 +48,7 @@ Nyuki relies on the open source Anaconda/Miniconda python distribution for scien
 computing. Many of the python and C++ libraries that nyuki depends upon are
 difficult to install due to complicated dependencies between package or the
 need to compile C++ files. Hence we chose to use a more robust package
-manager: `conda`. 
+manager: ``conda``. 
 
 Once conda is installed from the following `link <https://www.anaconda.com/products/individual>`_ ,
 the user can create new virtual environments and install packages like nyuki
@@ -69,7 +69,7 @@ environment using
 
    conda create -n nyuki-env -c krishnab75 nyuki
 
-This will create a new environment named `nyuki-env` into which the nyuki
+This will create a new environment named ``nyuki-env`` into which the nyuki
 application will be installed. Follow the prompts for the install and answer
 "yes" at the install prompt. Nyuki will install a number of dependencies, so
 it may take a few minutes to complete the installation. 
