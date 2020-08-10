@@ -3,8 +3,8 @@ Nyuki: A Geospatial Toolkit for Humans
 ======================================
 
 "Nyuki" translates to "bee" in Swahili, but is also the word used to refer to
-aerial drones. While working on a collaboration between DataKind<https://www.datakind.org/>
-and WeRobotics<https://werobotics.org/> using drone imagery for flood damage
+aerial drones. While working on a collaboration between `DataKind <https://www.datakind.org/>`_
+and `WeRobotics <https://werobotics.org/>`_ using drone imagery for flood damage
 assessment, we found it really hard to do simple manipulations to large geotiff image and vector
 files. Something as simple as resizing an image took 15-20 lines complicated
 code. Hence we designed Nyuki to help turn these cumbersome tasks into one-line
