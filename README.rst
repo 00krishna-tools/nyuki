@@ -5,6 +5,7 @@
 ======================================
 Nyuki: A Geospatial Toolkit for Humans
 ======================================
+   :align: center
 
 "Nyuki" translates to "bee" in Swahili, but is also the word used to refer to
 aerial drones. While working on a collaboration between `DataKind <https://www.datakind.org/>`_
