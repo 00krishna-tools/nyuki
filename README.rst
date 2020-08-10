@@ -1,3 +1,7 @@
+
+.. figure:: docs/assets/animated-bee-illustration-png-clip-art.png 
+   :align: center
+
 ======================================
 Nyuki: A Geospatial Toolkit for Humans
 ======================================

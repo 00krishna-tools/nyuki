@@ -16,7 +16,7 @@ free individual version of Miniconda from the following `website <https://docs.c
 
 Linux
 *****
-
+ 
 First install miniconda
 
 .. code-block:: bash
