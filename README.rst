@@ -67,16 +67,27 @@ environment using
 
 ::
 
-   Give the example
+   conda create -n nyuki-env -c krishnab75 nyuki
 
-And repeat
+This will create a new environment named `nyuki-env` into which the nyuki
+application will be installed. Follow the prompts for the install and answer
+"yes" at the install prompt. Nyuki will install a number of dependencies, so
+it may take a few minutes to complete the installation. 
+
+Once installation is complete, you can activate the environment and begin
+to use nyuki
 
 ::
 
-   until finished
+   conda activate nyuki-env
 
-End with an example of getting some data out of the system or using it
-for a little demo.
+The user should now be in the `nyuki-env` python environment. To access nyuki's
+commands and tools, type
+
+::
+
+   nyuki --help
+
 
 🔧 Running the tests 
 -------------------
