@@ -5,11 +5,15 @@ Nyuki: A Geospatial Toolkit for Humans
 "Nyuki" translates to "bee" in Swahili, but is also the word used to refer to
 aerial drones. While working on a collaboration between `DataKind <https://www.datakind.org/>`_
 and `WeRobotics <https://werobotics.org/>`_ using drone imagery for flood damage
-assessment, we found it really hard to do simple manipulations to large geotiff image and vector
+assessment, we found it difficult to do simple manipulations to large geotiff image and vector
 files. Something as simple as resizing an image took 15-20 lines complicated
 code. Hence we designed Nyuki to help turn these cumbersome tasks into one-line
 commands. We started with a few common operations but hope to expand.
 Contributions are always welcome. Also please give us a star if you like our tool.
+
+Nyuki is a command line application that runs on Windows, MacOS, and Linux
+operating systems. Nyuki is also developed in python, hence a python installation
+of version 3.6 or greater is required.
 
 📝 Table of Contents
 -------------------
@@ -52,10 +56,10 @@ manager: ``conda``.
 
 Once conda is installed from the following `link <https://www.anaconda.com/products/individual>`_ ,
 the user can create new virtual environments and install packages like nyuki
-into those environments. `Conda` package are stored in different public or
+into those environments. ``Conda`` packages are stored in different public or
 private channels, depending on whether the developer intends a package for
-public use, or for a limited group of users. Nyuki is currently located in `krishnab75` Anaconda
-channel but will soon be added to the widely `conda-forge` channel. 
+public use, or for a limited group of users. Nyuki is currently located in ``krishnab75`` Anaconda
+channel but will soon be added to the widely ``conda-forge`` channel. 
 
 
 Installing
@@ -81,7 +85,7 @@ to use nyuki
 
    conda activate nyuki-env
 
-The user should now be in the `nyuki-env` python environment. To access nyuki's
+The user should now be in the ``nyuki-env`` python environment. To access nyuki's
 commands and tools, type
 
 ::
@@ -117,10 +121,6 @@ Explain what these tests test and why
 
 Add notes about how to use the system.
 
-🚀 Deployment 
-------------
-
-Add additional notes about how to deploy this on a live system.
 
 ⛏️ Built Using 
 --------------
