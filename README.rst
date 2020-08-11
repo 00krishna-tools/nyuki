@@ -130,9 +130,9 @@ Add notes about how to use the system.
 ⛏️ Built Using 
 --------------
 
--  `Click`_ - Command Line Interface
--  `Rasterio`_ - Geospatial Library for Rasters
--  `Geopandas`_ Geospatial Library for Vector data  
+-  ``Click <https://click.palletsprojects.com/en/7.x/>``_ - Command Line Interface
+-  ``Rasterio<https://rasterio.readthedocs.io/en/latest/>``_ - Geospatial Library for Rasters
+-  ``Geopandas<https://geopandas.org/>``_ Geospatial Library for Vector data  
 
 ✍️ Authors 
 ----------
