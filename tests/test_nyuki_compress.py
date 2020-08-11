@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `src` package."""
+"""Tests for `nyuki` package."""
 
 import pytest
-
+import nyuki
 
 def test_compress():
     print('hello')

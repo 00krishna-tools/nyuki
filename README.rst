@@ -1,24 +1,37 @@
 
 .. figure:: docs/assets/animated-bee-illustration-png-clip-art.png 
+   :height: 455
+   :width: 249
    :align: center
 
 ======================================
 Nyuki: A Geospatial Toolkit for Humans
 ======================================
-   :align: center
 
 "Nyuki" translates to "bee" in Swahili, but is also the word used to refer to
-aerial drones. While working on a collaboration between `DataKind <https://www.datakind.org/>`_
-and `WeRobotics <https://werobotics.org/>`_ using drone imagery for flood damage
-assessment, we found it difficult to do simple manipulations to large geotiff image and vector
-files. Something as simple as resizing an image took 15-20 lines complicated
-code. Hence we designed Nyuki to help turn these cumbersome tasks into one-line
-commands. We started with a few common operations but hope to expand.
-Contributions are always welcome. Also please give us a star if you like our tool.
+aerial drones. While working on a project using aerial drone imagery for
+flood damage assessment with  `DataKind <https://www.datakind.org/>`_
+and `WeRobotics <https://werobotics.org/>`_ we found that using many common
+python geospatial libraries had a steep learning curve and were confusing
+to use. So we developed some simple command line tools and library
+functions to simplify common tasks and dramatically accelerate our
+development.
 
-Nyuki is a command line application that runs on Windows, MacOS, and Linux
-operating systems. Nyuki is also developed in python, hence a python installation
-of version 3.6 or greater is required.
+The other challenge with processing large aerial drone images was that most
+GIS software such as QGIS or ArcGIS often crashed while processing large images.
+Aerial drones can easily produce 50,000 x 50,000 pixel images or more.
+Because processing such large images is memory and processor intensive,
+some common GIS software can often fail during processing. With nyuki
+we rely on the command line which has a much lighter memory footprint and is
+easier to kill if something is taking too long. 
+
+Nyuki is developed for python 3.6 or greater and runs on Windows, MacOS, and Linux
+operating systems.
+
+We also wanted to thank all of the developers who built the libraries that we
+use in nyuki. Writing geospatial libraries is hard work, and 
+
+
 
 📝 Table of Contents
 -------------------

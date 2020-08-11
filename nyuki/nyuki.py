@@ -125,7 +125,7 @@ def reproject(sourcetiff, target_epsg='EPSG:4326'):
               prompt="Source file path",
               help="Enter the path to the original GEOTIFF raster image")
 @click.option('--target_compression', default='LZW', show_default=True,
-              type=click.Choice(['LZW', 'LZMA', 'LERC', 'JPEG', 'JPEG2000',
+              type=click.Choice(['LZW', 'LZMA','JPEG', 'JPEG2000',
                                  'DEFLATE', 'WEBP', 'ZSTD', 'NONE'], case_sensitive=True),
               prompt="Target compression method",
               help="Enter the compression standard to apply to the raster.")
