@@ -15,7 +15,7 @@ import os
 def test_lzw_compression(small_image, compression):
 
     newfile = compressor(small_image, compression, yes=True)
-    res = nyuki.utilities.dhash_distance(small_image, newfile)
+    res = nyuki.utilities.dhash_distance(small_image, newfile, hash_size=8)
     os.remove(newfile)
     assert  res < 0.20
 

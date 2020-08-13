@@ -103,7 +103,8 @@ def resample(sourcetiff, target_resolution, yes):
 @click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
               prompt="Target coordinate EPSG",
               help="Enter the coordinate projection to apply to the raster image.")
-def reproject(sourcetiff, target_epsg='EPSG:4326'):
+@click.option('--yes', '-y', is_flag=True, default=False, help="Execute command without prompting for user confirmation.")
+def reproject(sourcetiff, target_epsg='EPSG:4326', yes=False):
     """Reproject a Geotiff file to a new coordinate projection.
 
         This tool will reproject a raster image to a different EPSG coordinate projection.
@@ -118,7 +119,7 @@ def reproject(sourcetiff, target_epsg='EPSG:4326'):
         >>> nyuki reproject
         """
 
-    reprojector(sourcetiff, target_epsg)
+    reprojector(sourcetiff, target_epsg, yes)
     return 0
 
 
@@ -169,7 +170,8 @@ def compress(sourcetiff, target_compression, yes):
 @click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
               prompt="Target coordinate EPSG",
               help="Enter the coordinate projection to apply to the raster image.")
-def reproject(sourcefile, target_epsg='EPSG:4326'):
+@click.option('--yes', '-y', is_flag=True, default=False, help="Execute command without prompting for user confirmation.")
+def reproject(sourcefile, target_epsg='EPSG:4326', yes=False):
     """Reproject a vector file to a new coordinate system.
 
         This tool will reproject a vector file to a different EPSG coordinate projection.
@@ -182,7 +184,7 @@ def reproject(sourcefile, target_epsg='EPSG:4326'):
         Invoke interactive mode:\n
         >>> nyuki vector reproject
         """
-    vreprojector(sourcefile, target_epsg)
+    vreprojector(sourcefile, target_epsg, yes)
     return 0
 
 

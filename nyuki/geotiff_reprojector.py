@@ -7,32 +7,7 @@ import click
 import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling
 
-@click.command()
-@click.option('--sourcetiff', required=True, type=click.Path(exists=True),
-              prompt="Source file path",
-              help="Enter the path to the original GEOTIFF raster image")
-@click.option('--target_epsg', default='EPSG:4326', show_default=True, type=str,
-              prompt="Target coordinate EPSG",
-              help="Enter the coordinate projection to apply to the raster image.")
-def main(sourcetiff, target_epsg='EPSG:4326'):
-    """Application: Geotiff Reprojector.
-
-        This tool will reproject a raster image to a different EPSG coordinate projection.
-        The user enters the source GEOTIFF filename, and a valid target EPSG projection.
-        The file is output to the same directory as the source file. The new file is
-        also compressed with JPEG compression to keep the file size manageable.
-
-        Commandline app:\n
-        >>> geotiff-reprojector --sourcetiff file1.tif --target_epsg 'EPSG:4326'
-
-        Invoke interactive mode:\n
-        >>> geotiff-reprojector
-        """
-
-    reprojector(sourcetiff, target_epsg)
-    return 0
-
-def reprojector(sourcefile, target_epsg='EPSG:4326'):
+def reprojector(sourcefile, target_epsg='EPSG:4326', yes=False):
 
     # load file to get epsg info.
     dat = rasterio.open(sourcefile)
@@ -50,10 +25,11 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
     click.echo(f"target epsg: {target_epsg}\n")
     dat.close()
 
-    click.confirm('[INFO] File reprojection takes a while.\nDo you want to continue?',
+    if not yes:
+        click.confirm('[INFO] File reprojection takes a while.\nDo you want to continue?',
                   abort=True)
 
-    click.echo('\n[INFO] Good time to get a cup of coffee.\n[INFO] This task can take 15-30 minutes or longer depending on file size.\n')
+        click.echo('\n[INFO] Good time to get a cup of coffee.\n[INFO] This task can take 15-30 minutes or longer depending on file size.\n')
 
     with rasterio.open(sourcefile) as src:
         transform, width, height = calculate_default_transform(
@@ -82,6 +58,4 @@ def reprojector(sourcefile, target_epsg='EPSG:4326'):
                     resampling=Resampling.nearest)
 
     click.echo('[INFO] Task complete.')
-
-if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
+    return targetfile
