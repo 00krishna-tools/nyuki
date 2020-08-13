@@ -12,6 +12,7 @@ from .geotiff_compressor import compressor
 from .geotiff_info import information
 from .utilities import get_file_type
 
+
 @click.group()
 def nyuki():
     """Application: Nyuki toolkit
@@ -73,7 +74,8 @@ def info(sourcefile):
 @click.option('--target_resolution', type=np.float, required=True,
               prompt="Enter the target resolution in appropriate units for the projection",
               help="The resolution desired for the resampled image, in the units of that image's projection, eg., meters, degrees, etc.")
-def resample(sourcetiff, target_resolution):
+@click.option('--yes', '-y', is_flag=True, default=False, help="Execute command without prompting for user confirmation.")
+def resample(sourcetiff, target_resolution, yes):
     """Upsample or Downsample a Geotiff to a different resolution.
 
     This tool will resample a raster image to a different resolution.
@@ -84,13 +86,13 @@ def resample(sourcetiff, target_resolution):
     This tool will preserve the original projection of the image.
 
     Commandline app:\n
-    >>> nyuki resample --sourcetiff file1.tif --target_resolution 0.15
+    >>> nyuki resample --sourcetiff file1.tif --target_resolution 0.15 -y
 
     Invoke interactive mode:\n
     >>> nyuki resample
     """
 
-    resampler(sourcetiff, target_resolution)
+    resampler(sourcetiff, target_resolution, yes)
     return 0
 
 
@@ -129,7 +131,8 @@ def reproject(sourcetiff, target_epsg='EPSG:4326'):
                                  'DEFLATE', 'WEBP', 'ZSTD', 'NONE'], case_sensitive=True),
               prompt="Target compression method",
               help="Enter the compression standard to apply to the raster.")
-def compress(sourcetiff, target_compression='LZW'):
+@click.option('--yes', '-y', is_flag=True, default=False, help="Execute command without prompting for user confirmation.")
+def compress(sourcetiff, target_compression, yes):
     """ Compress Geotiff raster files to shrink file size.
 
        This tool will compress a Geotiff raster image using the specified compression
@@ -147,13 +150,13 @@ def compress(sourcetiff, target_compression='LZW'):
 
     
         Commandline app:\n
-        >>> nyuki raster compress --sourcetiff file1.tif --target_compression 'LZW'
+        >>> nyuki raster compress --sourcetiff file1.tif --target_compression 'LZW' -y
 
         Invoke interactive mode:\n
         >>> nyuki raster compress
         """
 
-    compressor(sourcetiff, target_compression)
+    compressor(sourcetiff, target_compression, yes)
     return 0
 
 

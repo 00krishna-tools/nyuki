@@ -7,7 +7,7 @@ import pytest
 import nyuki
 from nyuki.geotiff_compressor import compressor
 import dhash
-
+import os
 
 @pytest.mark.usefixtures('small_image')
 
@@ -16,28 +16,14 @@ def test_compress():
     print('hello')
     assert 1 == 1
 
-def test_lzw_compression(small_image):
-    compressor(small_image, 'LZW')
-    assert nyuki.utilities.dhash_distance(small_image, 'sample_image_small_compress_LZW.tif') < 0.20
+@pytest.mark.parametrize("compression", ['LZW', 'LZMA','JPEG', 'JPEG2000','DEFLATE', 'WEBP', 'ZSTD', 'NONE'])
+def test_lzw_compression(small_image, compression):
 
-def test_lzma_compression():
-    pass
+    newfile = compressor(small_image, compression, yes=True)
+    res = nyuki.utilities.dhash_distance(small_image, newfile)
+    os.remove(newfile)
+    assert  res < 0.20
 
-def test_deflate_compression():
-    pass
 
-def test_jpeg_compression():
-    pass
-
-def test_jpeg2000_compression():
-    pass
-
-def test_webp_compression():
-    pass
-
-def test_zstd_compression():
-    pass
-
-def test_none_compression():
-    pass
-
+def teardown_function():
+    print('tearing down')

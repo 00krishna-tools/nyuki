@@ -9,7 +9,7 @@ import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling
 
 
-def compressor(sourcefile, target_compression='LZW'):
+def compressor(sourcefile, target_compression='LZW', yes=False):
 
     # load file to get info.
     dat = rasterio.open(sourcefile)
@@ -31,11 +31,11 @@ def compressor(sourcefile, target_compression='LZW'):
 
     # check if new compression is same as old compression
     
-    
-    click.confirm('[INFO] File compression takes a while.\nDo you want to continue?',
+    if not yes:
+        click.confirm('[INFO] File compression takes a while.\nDo you want to continue?',
                   abort=True)
 
-    click.echo('\n[INFO] Good time to get a cup of coffee.\n[INFO] This task can take 15-30 minutes or longer depending on file size.\n')
+        click.echo('\n[INFO] Good time to get a cup of coffee.\n[INFO] This task can take 15-30 minutes or longer depending on file size.\n')
 
     with rasterio.Env():
 

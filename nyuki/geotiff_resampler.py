@@ -11,35 +11,7 @@ from rasterio import Affine, MemoryFile
 from rasterio.enums import Resampling
 
 
-@click.command()
-@click.option('--sourcetiff', type=click.Path(exists=True), required=True,
-              prompt="Enter the path and filename of the source file",
-              help="Path to the original GEOTIFF raster image")
-@click.option('--target_resolution', type=np.float, required=True,
-              prompt="Enter the target resolution in appropriate units for the projection",
-              help="The resolution desired for the resampled image, in the units of that image's projection, eg., meters, degrees, etc.")
-def main(sourcetiff, target_resolution):
-    """Application: Geotiff Resampler.
-
-    This tool will resample a raster image to a different resolution.
-    The user enters the source GEOTIFF filename, and a target resolution.
-    The tool will then resample the image to a new resolution and output the
-    new GEOTIFF file to the source directory.
-
-    This tool will preserve the original projection of the image.
-
-    Commandline app:\n
-    >>> geotiff-resampler --sourcetiff file1.tif --target_resolution 0.15
-
-    Invoke interactive mode:\n
-    >>> geotiff-resampler
-    """
-
-    resampler(sourcetiff, target_resolution)
-    return 0
-
-
-def resampler(sourcefile, target_resolution):
+def resampler(sourcefile, target_resolution, yes=False):
 
     click.echo(
         "This package will resample a GEOTIFF Raster file to a different resolution.")
@@ -75,10 +47,13 @@ def resampler(sourcefile, target_resolution):
 
     click.echo(f'[INFO] computed pixel scaling factor: {round(scaling_factor, 3)}\n')
     dat.close()
-    click.confirm('File resampling takes a while.\nDo you want to continue?',
+
+    if not yes:
+        click.confirm('File resampling takes a while.\nDo you want to continue?',
                  abort=True)
 
-    click.echo('[INFO] Good time to get a cup of coffee.\n')
+        click.echo('[INFO] Good time to get a cup of coffee.\n')
+
     with rasterio.open(sourcefile) as src:
         with resample_raster(src, out_path=targetfile, scale=scaling_factor) as resampled:
             click.echo('[INFO] Process complete.\n')
@@ -165,6 +140,3 @@ def write_raster(path, data, **profile):
     with rasterio.open(path) as dataset:  # Reopen as DatasetReader
         yield dataset
 
-
-if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
