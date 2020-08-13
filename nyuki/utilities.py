@@ -11,15 +11,16 @@ of Nyuki's operations. The functions include
 """
 import sys
 import os
-import click
 import numpy as np
 import rasterio
 from rasterio import Affine, MemoryFile
 from rasterio.enums import Resampling
+from PIL import Image
+import dhash
 from osgeo import gdal
 
 
-
+Image.MAX_IMAGE_PIXELS = None
 
 def get_file_type(filename):
     """
@@ -42,3 +43,12 @@ def get_file_type(filename):
         return('raster')
     else:
         return('vector')
+
+
+def dhash_distance(left, right, hash_size=8):
+        left = Image.open(left)
+        right = Image.open(right)
+        hash1 = dhash.dhash_int(left, size=hash_size)
+        hash2 = dhash.dhash_int(right, size=hash_size)
+        num_bits_different = dhash.get_num_bits_different(hash1, hash2)
+        return 100 * num_bits_different / (hash_size * hash_size * 2)
