@@ -40,6 +40,7 @@ setup(
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
+    package_data={'': ['tests/test_data/*.tif', 'tests/test_data/*.geojson']},
     keywords='nyuki',
     name='nyuki',
     packages=find_packages(include=['nyuki', 'nyuki.*']),

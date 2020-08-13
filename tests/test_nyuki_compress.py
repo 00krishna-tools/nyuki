@@ -5,16 +5,20 @@
 
 import pytest
 import nyuki
+from nyuki.geotiff_compressor import compressor
 import dhash
+
+
+@pytest.mark.usefixtures('small_image')
 
 
 def test_compress():
     print('hello')
     assert 1 == 1
 
-def test_lzw_compression():
-    nyuki.geotiff_compressor.compressor('sample_image_small.tif', 'LZW')
-    assert nyuki.utilities.dhash_distance('sample_image_small.tif', 'sample_image_small_compress_LZW.tif') < 0.20
+def test_lzw_compression(small_image):
+    compressor(small_image, 'LZW')
+    assert nyuki.utilities.dhash_distance(small_image, 'sample_image_small_compress_LZW.tif') < 0.20
 
 def test_lzma_compression():
     pass
