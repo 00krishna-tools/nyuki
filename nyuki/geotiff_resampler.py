@@ -61,6 +61,8 @@ def resampler(sourcefile, target_resolution, yes=False):
             click.echo(f'new image dimensions: {resampled.shape}')
             click.echo(f'new image EPSG projection: {resampled.crs}')
 
+    return targetfile
+
 @contextmanager
 def resample_raster(raster, out_path=None, scale=1):
     """ Resample a raster
