@@ -31,7 +31,8 @@ install:
 #  - conda install conda-build=3.19.2
   - conda create -q -n test-environment python=$TOXENV conda pytest six pytest-cov pytest-mock 
   - conda activate test-environment 
-  - conda install --yes --file requirements.txt
+  - conda install --yes --file requirements_conda.txt
+  - pip install -r requirements.txt
   - cd tests/test_data
   - wget https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_small.tif
   - cd $TRAVIS_BUILD_DIR

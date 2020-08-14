@@ -1,0 +1,10 @@
+numpy >=1.18.5
+pandas
+rasterio
+click >=7
+tqdm
+geopandas
+pillow
+libwebp
+pytest
+pytest-runner
