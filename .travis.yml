@@ -33,7 +33,7 @@ install:
   - conda activate test-environment
   - pwd
   - cd tests/test_data
-  - ls -al
+  - wget https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_small.tif
 
 #  - conda build packaging/  # add directory if needed.
 #  - conda install --use-local nyuki
