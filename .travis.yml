@@ -31,8 +31,12 @@ install:
   - conda install conda-build=3.19.2
   - conda create -q -n test-environment python=$TOXENV conda pytest six pytest-cov pytest-mock 
   - conda activate test-environment
-  - conda build packaging/  # add directory if needed.
-  - conda install --use-local nyuki
+  - pwd
+  - ls -al 
+ 
+
+#  - conda build packaging/  # add directory if needed.
+#  - conda install --use-local nyuki
 
 script:
   - pytest -v --color=yes --cov=cpr tests

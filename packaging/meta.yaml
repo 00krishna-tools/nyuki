@@ -8,7 +8,7 @@ package:
 
 source: 
   url: https://github.com/00krishna-tools/nyuki/archive/v{{ version }}.tar.gz
-  sha256: 88e943eed59d5ca95d6716b22b47c71a7b7c9323a71348a4623e329bb66d7ae7
+  sha256: 
 
 build:
   noarch: python
@@ -40,11 +40,16 @@ requirements:
     - libwebp
 
 test:
+  source_files:
+    - tests
+  files:
+    - test_data/sample_image_small.tif
   imports:
     - nyuki
   requires:
     - pytest
     - pytest-runner
+    - pytest-cases
 
 about:
   home: https://github.com/00krishna-tools/nyuki
