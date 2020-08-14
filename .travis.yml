@@ -30,12 +30,10 @@ install:
   - conda config --add channels conda-forge 
 #  - conda install conda-build=3.19.2
   - conda create -q -n test-environment python=$TOXENV conda pytest six pytest-cov pytest-mock 
-  - conda activate test-environment
-  - pwd
-  - printenv 
+  - conda activate test-environment 
   - cd tests/test_data
   - wget https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_small.tif
-  - cd $HOME/build/00krishna-tools/nyuki
+  - cd $TRAVIS_BUILD_DIR
 #  - conda build packaging/  # add directory if needed.
 #  - conda install --use-local nyuki
 
