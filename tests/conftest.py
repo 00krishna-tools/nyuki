@@ -2,23 +2,30 @@ import sys
 import pytest
 import os
 import shutil
+import requests
+
 
 collect_ignore = ['setup.py']
 
-test_files = [os.path.join(os.path.dirname(__file__), p) for p in [
-    'test_data/sample_image_small.tif']]
+@pytest.fixture(scope="function")
+def small_image(tmpdir):
+    url = 'https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_small.tif'
 
-@pytest.fixture(scope='function')
-def data(tmpdir):
-    """A temporary directory containing a copy of the files in data."""
-    for filename in test_files:
-        shutil.copy(filename, str(tmpdir))
+    r = requests.get(url)
 
-    return tmpdir
+    with open(os.path.join(str(tmpdir), 'sample_image_small.tif'), 'wb') as f:
+        f.write(r.content)
+
+    return os.path.join(str(tmpdir), 'sample_image_small.tif')
 
 
 @pytest.fixture(scope="function")
-def small_image(data):
-    return os.path.join(str(data), 'sample_image_small.tif')
+def small_vector_file(tmpdir):
+    url = 'https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_vector_file.geojson'
 
+    r = requests.get(url)
 
+    with open(os.path.join(str(tmpdir), 'sample_vector_file.geojson'), 'wb') as f:
+        f.write(r.content)
+
+    return os.path.join(str(tmpdir), 'sample_vector_file.geojson')
