@@ -32,8 +32,8 @@ install:
   - conda create -q -n test-environment python=$TOXENV conda pytest six pytest-cov pytest-mock 
   - conda activate test-environment
   - pwd
-  - ls -al 
- 
+  - cd tests/test_data
+  - ls -al
 
 #  - conda build packaging/  # add directory if needed.
 #  - conda install --use-local nyuki
