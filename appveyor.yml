@@ -26,8 +26,8 @@ install:
   - conda update conda
   - conda info -a
   - conda config --add channels conda-forge
-  - "conda create -q -n test-environment python=%PYTHON_VERSION% conda pytest six pytest-cov pytest-mock"
-  - activate test-environment
+  - "conda create -n test-environment python=%PYTHON_VERSION% conda pytest six pytest-cov pytest-mock"
+  - conda activate test-environment
   - python setup.py install
 
 test_script:
