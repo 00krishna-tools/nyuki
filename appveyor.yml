@@ -31,7 +31,7 @@ install:
   - conda update conda
   - conda info -a
   - conda config --add channels conda-forge
-  - "conda create -n test-environment python=%PYTHON_VERSION% conda pytest six pytest-cov pytest-mock coveralls codecov"
+  - "conda create -n test-environment python=%PYTHON_VERSION% conda pytest six pytest-cov pytest-mock"
   - "conda activate test-environment"
   - conda install --yes --file requirements_conda.txt
   - pip install -r requirements.txt
@@ -41,6 +41,3 @@ test_script:
   - conda list
   - pytest tests
 
-after_test:
-  - codecov
-  - coveralls
