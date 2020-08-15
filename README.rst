@@ -10,6 +10,11 @@ Nyuki: A Geospatial Toolkit for Humans
 .. image:: https://ci.appveyor.com/api/projects/status/akr8yxfous98dlrl?svg=true
    :target: https://ci.appveyor.com/api/projects/status/akr8yxfous98dlrl/branch/master?svg=true
    :alt: Appveyor
+   
+.. image:: https://coveralls.io/repos/github/00krishna-tools/nyuki/badge.svg?branch=master
+   :target: https://coveralls.io/github/00krishna-tools/nyuki?branch=master
+
+
 "Nyuki" translates to "bee" in Swahili, but is also the word used to refer to
 aerial drones. While working on a project using aerial drone imagery for
 flood damage assessment with  `DataKind <https://www.datakind.org/>`_
