@@ -7,12 +7,18 @@
 ======================================
 Nyuki: A Geospatial Toolkit for Humans
 ======================================
+.. image:: https://travis-ci.org/00krishna-tools/nyuki.svg?branch=master
+   :target: https://travis-ci.org/00krishna-tools/nyuki
+
 .. image:: https://ci.appveyor.com/api/projects/status/akr8yxfous98dlrl?svg=true
    :target: https://ci.appveyor.com/api/projects/status/akr8yxfous98dlrl/branch/master?svg=true
-   :alt: Appveyor
    
 .. image:: https://coveralls.io/repos/github/00krishna-tools/nyuki/badge.svg?branch=master
    :target: https://coveralls.io/github/00krishna-tools/nyuki?branch=master
+
+.. image:: https://codecov.io/gh/00krishna-tools/nyuki/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/00krishna-tools/nyuki
+
 
 
 "Nyuki" translates to "bee" in Swahili, but is also the word used to refer to
