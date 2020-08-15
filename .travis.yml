@@ -29,7 +29,7 @@ install:
   - conda info -a
   - conda config --add channels conda-forge 
 #  - conda install conda-build=3.19.2
-  - conda create -q -n test-environment python=$TOXENV conda pytest six pytest-cov pytest-mock codecov coveralls
+  - conda create -q -n test-environment python=$TOXENV conda pytest six pytest-cov pytest-mock 
   - conda activate test-environment 
   - conda install --yes --file requirements_conda.txt
   - pip install -r requirements.txt
@@ -38,9 +38,10 @@ install:
 #  - conda install --use-local nyuki
 
 script:
-  - pytest -v --color=yes --cov=nyuki tests
-  - pytest --doctest-modules --pep8 -v --cov=nyuki --cov-report tests
+#  - pytest -v --color=yes --cov=nyuki tests
+  - pytest --doctest-modules --pep8 -v --color=yes --cov=nyuki --cov-report term-missing tests
+
 after success:
+  - conda install codecov
   - codecov
-  - coveralls
 
