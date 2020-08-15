@@ -19,6 +19,9 @@ Nyuki: A Geospatial Toolkit for Humans
 .. image:: https://codecov.io/gh/00krishna-tools/nyuki/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/00krishna-tools/nyuki
 
+.. image:: https://readthedocs.org/projects/nyuki-a-geospatial-toolkit-for-humans/badge/?version=latest
+  :target: https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/?badge=latest
+  :alt: Documentation Status
 
 
 "Nyuki" translates to "bee" in Swahili, but is also the word used to refer to
