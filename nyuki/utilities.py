@@ -16,7 +16,7 @@ import rasterio
 from rasterio import Affine, MemoryFile
 from rasterio.enums import Resampling
 from PIL import Image
-import dhash
+from .dhash import get_num_bits_different, dhash_int
 from osgeo import gdal
 
 
