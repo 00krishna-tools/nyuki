@@ -39,7 +39,7 @@ install:
 
 script:
   - pytest -v --color=yes --cov=nyuki tests
-
+  - py.test coveralls/tests.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
 after success:
   - conda install codecov
   - codecov
