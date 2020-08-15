@@ -48,7 +48,7 @@ def get_file_type(filename):
 def dhash_distance(left, right, hash_size=8):
         left = Image.open(left)
         right = Image.open(right)
-        hash1 = dhash.dhash_int(left, size=hash_size)
-        hash2 = dhash.dhash_int(right, size=hash_size)
-        num_bits_different = dhash.get_num_bits_different(hash1, hash2)
+        hash1 = dhash_int(left, size=hash_size)
+        hash2 = dhash_int(right, size=hash_size)
+        num_bits_different = get_num_bits_different(hash1, hash2)
         return 100 * num_bits_different / (hash_size * hash_size * 2)
