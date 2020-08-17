@@ -10,26 +10,18 @@ each tool. So let's get started.
 Installing Nyuki
 ================
 
-Nyuki must be installed using the Anaconda python distribution from Anaconda.com. Download and install the 
-free individual version of Miniconda from the following `website <https://docs.conda.io/en/latest/miniconda.html>`_
-. To install Miniconda go to the command prompt on follow the instructions for Linux, Windows, or Mac.
+Nyuki must be installed using the free Anaconda/Miniconda python distribution from
+Anaconda.com. Follow the instructions in the Installation section of documentation.
 
-Linux
 *****
  
-First install miniconda
 
-.. code-block:: bash
 
-     bash minconda
 
-Follow the prompts to install miniconda. Then close and restart the terminal in order to ensure that Miniconda is installed. 
-At the prompt type
 
-.. code-block:: bash
 
-     conda init <shellname>
+.. raw:: html
 
-You can use replace `<shellname>` with the name of your current shell software, such as `conda init bash` or `conda init zsh`, etc. 
-
-Once miniconda is installed, we must create a new virtual environment to contain the software that we install. 
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
