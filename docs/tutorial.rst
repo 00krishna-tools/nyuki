@@ -20,13 +20,15 @@ Obtaining the sample image files
 The sample image files are located on the Github repository for the `nyuki`
 package. Click on the following links to download the files.
 
-- `sample image small<https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_small.tif>`_
-- `sample vector file<https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_vector_file.geojson>'_
+- `sample image small`_
+- `sample vector file`_
 
 The user may also download a medium sized sample image to experiment with, if he/she wishes. 
-- `sample image medium<https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_medium.tif>`_
+- `sample image medium`_
 
-
+.. _sample image small: https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_small.tif
+.. _sample vector file: https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_vector_file.geojson
+.. _sample image medium: https://github.com/00krishna-tools/nyuki/releases/download/v0.0.1/sample_image_medium.tif
 ==============================================
 Nyuki Info: Obtaining metadata about your file
 ==============================================
