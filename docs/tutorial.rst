@@ -110,8 +110,21 @@ read.
 Nyuki Compress: Compressing images
 ==============================================
 
-Geospatial data files can be very large, so compressing those files into
+Geospatial data files can be very large, so compressing those files before
+storing or transmitting them is important. ``Nyuki`` supports the following common
+compression standards:
+- LZW
+- LZMA
+- JPEG
+- JPEG2000
+- DEFLATE
+- ZSTD
+- NONE
 
+If you have never heard of some or most of these standards, that is fine. These
+are common methods that give reliable results across Windows, Mac, and Linux
+platforms.
 
+The x
 
 
