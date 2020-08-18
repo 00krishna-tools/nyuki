@@ -113,18 +113,48 @@ Nyuki Compress: Compressing images
 Geospatial data files can be very large, so compressing those files before
 storing or transmitting them is important. ``Nyuki`` supports the following common
 compression standards:
+
 - LZW
 - LZMA
 - JPEG
 - JPEG2000
 - DEFLATE
 - ZSTD
-- NONE
+- NONE (removes compression from file)
 
 If you have never heard of some or most of these standards, that is fine. These
 are common methods that give reliable results across Windows, Mac, and Linux
-platforms.
+platforms. Note that the "NONE" standard will actually uncompress a file, or
+save a file with no compression. 
 
-The x
+To try out the compression features, let's start by looking at information on
+the small tif file and confirming that it really is uncompressed.
+
+.. code-block:: console
+   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
+
+ 	 File info for: sample_image_small.tif: 
+
+	 Coordinate projection: EPSG:32737
+	 File type: GTiff
+	 File size: (1312, 2170)
+	 Pixel Units: metre
+	 Pixel size: (0.068, 0.068)
+	 Number of Bands: 3
+	 Data type per band: ('uint8', 'uint8', 'uint8')
+	 Compression: Uncompressed
+	 Nodata character: None
+
+The compression setting shows "Uncompressed."
+
+Next we can apply LZMA compression to the file using the following command.
+
+.. code-block:: console
+   (proj_nyuki)$ nyuki raster compress --sourcetif sample_image_small.tif --target_compression LZMA -y
+
+After a minute, ``nyuki`` will indicate that the operation is complete. Now we
+can check that the file was actually compressed. We can confirm this in two
+ways. 
+
 
 
