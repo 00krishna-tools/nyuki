@@ -106,9 +106,9 @@ read.
 
     $ gdalinfo sample_image_small.tif
 
-==============================================
+==================================
 Nyuki Compress: Compressing images
-==============================================
+==================================
 
 Geospatial data files can be very large, so compressing those files before
 storing or transmitting them is important. ``Nyuki`` supports the following common
@@ -154,7 +154,90 @@ Next we can apply LZMA compression to the file using the following command.
 
 After a minute, ``nyuki`` will indicate that the operation is complete. Now we
 can check that the file was actually compressed. We can confirm this in two
-ways. 
+ways: check the file information and check the file size.
+
+To check the file information we can use the same command we originally used:
+
+.. code-block:: console
+   (proj_nyuki)$ nyuki info --sourcefile sample_image_small_compress_LZMA.tif
+
+ 	 File info for: sample_image_small_compress_LZMA.tif: 
+
+	 Coordinate projection: EPSG:32737
+	 File type: GTiff
+	 File size: (1312, 2170)
+	 Pixel Units: metre
+	 Pixel size: (0.068, 0.068)
+	 Number of Bands: 3
+	 Data type per band: ('uint8', 'uint8', 'uint8')
+	 Compression: lzma
+	 Nodata character: None
+
+So now we can see that the compression standard is set to "LZMA."
+
+Further, if we want to see the different in file size, we could use a command
+like:
+
+.. code-block:: console
+   (proj_nyuki)$ ls -lh
+
+   -rw-rw-r-- 1 demo demo 282M Aug 11 14:07 sample_image_medium.tif
+   -rw-rw-r-- 1 demo demo 3.5M Aug 18 12:09 sample_image_small_compress_LZMA.tif
+   -rw-rw-r-- 1 demo demo 8.2M Aug 11 14:37 sample_image_small.tif
+   -rw-rw-r-- 1 demo demo 318K Aug 13 16:28 sample_vector_file.geojson
+
+So again we can see that the uncompressed file is 8.2 MB while the compressed
+file is 3.5 MB. Not that in some cases--and for confusing reasons--compressed
+files may actually be larger than their uncompressed originals. The circumstances
+under which this happens have to do with the compression algorithms used and how
+those algorithms represent the compressed form of the data.
+
+====================================================================
+Nyuki Reproject: Reprojecting images to different coordinate systems
+====================================================================
+
+The next tool to investigate is the reproject tool. One common operation in
+geospatial analysis is to convert from one system of coordinates to another.
+Sometimes a user has an image with coordinates in latitude/longitude, and they
+prefer to work in some coordinate system that is more attuned to a local
+geographic region. Further, different coordinate systems use different units
+of length. Switching coordinate systems may sometimes make analysis easier
+because the units of length are easier to interpret. A good example of this
+is the 
+
+
+
+
+
+
+
+
+
+
+=======================================================================
+Nyuki Resample: Upsampling/Downsampling images to different resolutions
+=======================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
