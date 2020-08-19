@@ -53,7 +53,7 @@ def r_information(sourcefile):
     click.echo(f"\t Coordinate projection: {dat.crs}")
     click.echo(f"\t File type: {dat.profile['driver']}")
     click.echo(f"\t File size: {dat.shape}")
-    click.echo(f"\t Pixel Units: {dat.crs.linear_units}")
+    click.echo(f"\t Pixel Units: {image_units(dat)}")
     click.echo(f"\t Pixel size: {(round(dat.res[0], 3), round(dat.res[1], 3))}")
     click.echo(f"\t Number of Bands: {dat.profile['count']}")
     click.echo(f"\t Data type per band: {dat.dtypes}")
@@ -68,8 +68,11 @@ def v_information(sourcefile):
     click.echo(f"\n \t File info for: {sourcefile}: \n")
     click.echo(f"\t Coordinate projection: {dat.crs}")
 
-
-
+def image_units(rasterio_open_image):
+    if rasterio_open_image.crs.linear_units == 'unknown':
+        return 'unknown, likely degrees'
+    else:
+        return rasterio_open_image.linear_units
 
 
 if __name__ == "__main__":
