@@ -75,12 +75,20 @@ processing tasks. The tools implemented so far include:
 🏁 Getting Started 
 -----------------
 
-These instructions will get you a copy of the project up and running on
-your local machine for development and testing purposes. See
-`deployment`_ for notes on how to deploy the project on a live system.
+The "Installing" section below gives a brief sketch of how to install the
+``nyuki`` package. More detailed instructions are included in the "Installation"
+second of the package `documentation<https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/installation.html>`_.
 
-Prerequisites
-~~~~~~~~~~~~~
+Learning to use ``nyuki`` assumes that the reader has a beginner level of understand
+of geospatial data including the difference between raster file and vector files,
+the basics of coordinate reference systems, and some familiarity with common
+GIS software such as QGIS or ESRI ArcGIS.
+
+Learning ``nyuki`` is as simple as following the `tutorial<https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/tutorial.html>`_.
+
+
+Installing
+~~~~~~~~~~
 
 Nyuki relies on the open source Anaconda/Miniconda python distribution for scientific
 computing. Many of the python and C++ libraries that nyuki depends upon are
@@ -94,10 +102,6 @@ into those environments. ``Conda`` packages are stored in different public or
 private channels, depending on whether the developer intends a package for
 public use, or for a limited group of users. Nyuki is currently located in ``krishnab75`` Anaconda
 channel but will soon be added to the widely ``conda-forge`` channel. 
-
-
-Installing
-~~~~~~~~~~
 
 Assuming that the user has successfully installed the Anaconda/miniconda
 python distribution on their computer, the user may install nyuki in a stand-alone
@@ -159,9 +163,9 @@ Add notes about how to use the system.
 ⛏️ Built Using 
 --------------
 
--  ``Click <https://click.palletsprojects.com/en/7.x/>``_ - Command Line Interface
--  ``Rasterio<https://rasterio.readthedocs.io/en/latest/>``_ - Geospatial Library for Rasters
--  ``Geopandas<https://geopandas.org/>``_ Geospatial Library for Vector data  
+-  `Click <https://click.palletsprojects.com/en/7.x/>`_ - Command Line Interface
+-  `Rasterio<https://rasterio.readthedocs.io/en/latest/>`_ - Geospatial Library for Rasters
+-  `Geopandas<https://geopandas.org/>`_ Geospatial Library for Vector data  
 
 ✍️ Authors 
 ----------

@@ -6,6 +6,14 @@ on both raster and vector data. The tutorial below walks users through
 the command line tools that are part of the package. A subsequent tutorial
 will show how to import and use nyuki as a programming library.
 
+If you are like me and hate reading documentation, please follow along with
+the video which is infinitely easier and more entertaining.
+
+.. raw:: html
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
 ================
 Installing Nyuki
 ================
@@ -34,11 +42,6 @@ The user may also download a medium sized sample image to experiment with, if he
 Nyuki Info: Obtaining metadata about your file
 ==============================================
 
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>
 
 The first thing that most users want to do is check the metadata about their
 raster or vector files. Metadata includes the spatial coordinate system used
@@ -49,20 +52,20 @@ can be a bit confusing to navigate, ``nyuki info`` is meant to be a little
 easier to interpret.
 
 To start the tutorial, navigate via the command line to the directory in which
-the small test files were downloaded. Next we activate the ``proj_nyuki``
+the small test files were downloaded. Next we activate the ``nyuki-env``
 environment to access our ``nyuki`` application.
 
 .. code-block:: console
 
-    $ conda activate proj_nyuki
+    $ conda activate nyuki-env
 
-We will usually see the ``(proj_nyuki)`` indicator appear next to the command
+We will usually see the ``(nyuki-env)`` indicator appear next to the command
 prompt in the terminal. Next we can test that ``nyuki`` is installed using the
 Help command.
 
 .. code-block:: console
 
-    $ nyuki --help
+    (nyuki-env)$ nyuki --help
 
 If the help screen appears, then ``nyuki`` is installed. If otherwise, then
 check the Installation instructions located in this documentation website.
@@ -71,7 +74,7 @@ To obtain the metadata information for the raster file, type:
 
 .. code-block:: console
 
-    $ nyuki info --sourcefile sample_image_small.tif
+    (nyuki-env)$ nyuki info --sourcefile sample_image_small.tif
 
 The output should resemble
 
@@ -101,7 +104,7 @@ read.
 
 .. code-block:: console
 
-    $ gdalinfo sample_image_small.tif
+    (nyuki-env)$ gdalinfo sample_image_small.tif
 
 To see the metadata for a vector file, we use the same command, but with
 a reference to a vector file. Note that the vector information tool is still
@@ -109,7 +112,7 @@ a work in process and currently shows only limited information.
 
 .. code-block:: console
 
-    $ nyuki info --sourcefile sample_vector_file.geojson
+    (nyuki-env)$ nyuki info --sourcefile sample_vector_file.geojson
 
  	 File info for: sample_vector_file.geojson: 
 
@@ -144,7 +147,7 @@ the small tif file and confirming that it really is uncompressed.
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
+   (nyuki-env)$ nyuki info --sourcefile sample_image_small.tif
 
  	 File info for: sample_image_small.tif: 
 
@@ -164,7 +167,7 @@ Next we can apply LZMA compression to the file using the following command.
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki raster compress --sourcetif sample_image_small.tif --target_compression LZMA -y
+   (nyuki-env)$ nyuki raster compress --sourcetif sample_image_small.tif --target_compression LZMA -y
 
 After a minute, ``nyuki`` will indicate that the operation is complete. Now we
 can check that the file was actually compressed. We can confirm this in two
@@ -174,7 +177,7 @@ To check the file information we can use the same command we originally used:
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki info --sourcefile sample_image_small_compress_LZMA.tif
+   (nyuki-env)$ nyuki info --sourcefile sample_image_small_compress_LZMA.tif
 
  	 File info for: sample_image_small_compress_LZMA.tif: 
 
@@ -195,7 +198,7 @@ like:
 
 .. code-block:: console
 
-   (proj_nyuki)$ ls -lh
+   (nyuki-env)$ ls -lh
 
    -rw-rw-r-- 1 demo demo 282M Aug 11 14:07 sample_image_medium.tif
    -rw-rw-r-- 1 demo demo 3.5M Aug 18 12:09 sample_image_small_compress_LZMA.tif
@@ -229,7 +232,7 @@ units.
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
+   (nyuki-env)$ nyuki info --sourcefile sample_image_small.tif
 
  	 File info for: sample_image_small.tif: 
 
@@ -257,7 +260,7 @@ Let's reproject our image to this new coordinate system.
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki raster reproject --sourcetiff sample_image_small.tif --target_epsg EPSG:4326 -y
+   (nyuki-env)$ nyuki raster reproject --sourcetiff sample_image_small.tif --target_epsg EPSG:4326 -y
 
 After the code runs, the user can see the output file as ``sample_image_small_proj_4326.tif.``
 To check that the projection operation completed successfully we can use the
@@ -265,7 +268,7 @@ To check that the projection operation completed successfully we can use the
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki info --sourcefile sample_image_small_proj_4326.tif
+   (nyuki-env)$ nyuki info --sourcefile sample_image_small_proj_4326.tif
 
  	 File info for: sample_image_small_proj_4326.tif: 
 
@@ -301,7 +304,7 @@ height and width of each pixel corresponds to 6.7 centimeters.
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
+   (nyuki-env)$ nyuki info --sourcefile sample_image_small.tif
 
  	 File info for: sample_image_small.tif: 
 
@@ -321,14 +324,14 @@ and users are free to resample to any size they wish.
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki raster resample --sourcetiff sample_image_small.tif --target_resolution 0.22 -y
+   (nyuki-env)$ nyuki raster resample --sourcetiff sample_image_small.tif --target_resolution 0.22 -y
 
 Once the process is complete we can import the image into QGIS or ArcGIS to
 check the result. Or we can simply check the information on the image. 
 
 .. code-block:: console
 
-   (proj_nyuki)$ nyuki info --sourcefile sample_image_small_resampled_0_22metre.tif
+   (nyuki-env)$ nyuki info --sourcefile sample_image_small_resampled_0_22metre.tif
 
    File info for: sample_image_small_resampled_0_22metre.tif:
 

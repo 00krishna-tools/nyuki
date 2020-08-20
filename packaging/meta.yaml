@@ -1,6 +1,6 @@
 
 {% set name = "nyuki" %}
-{% set version = "0.0.1" %}
+{% set version = "0.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source: 
   url: https://github.com/00krishna-tools/nyuki/archive/v{{ version }}.tar.gz
-  sha256: 
+  sha256: a6c48cba1dd9149c976e0e505e54a39031736fb4fd9c7eacfc6799a6d7c461db
 
 build:
   noarch: python
@@ -40,16 +40,8 @@ requirements:
     - libwebp
 
 test:
-  source_files:
-    - tests
-  files:
-    - test_data/sample_image_small.tif
   imports:
     - nyuki
-  requires:
-    - pytest
-    - pytest-runner
-    - pytest-cases
 
 about:
   home: https://github.com/00krishna-tools/nyuki
@@ -59,8 +51,8 @@ about:
   summary: "A geospatial library for humans. "
 
   description: "Nyuki: a geospatial library for humans"
-  #doc_url: https://simplejson.readthedocs.io/
-  #dev_url: https://github.com/00krishna-tools/nyuki
+  doc_url: https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/
+  dev_url: https://github.com/00krishna-tools/nyuki
 
 extra:
   recipe-maintainers:
