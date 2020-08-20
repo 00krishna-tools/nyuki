@@ -45,8 +45,8 @@ Nyuki is developed for python 3.6 or greater and runs on Windows, MacOS, and Lin
 operating systems.
 
 We also wanted to thank all of the developers who built the libraries that we
-use in nyuki. Writing geospatial libraries is hard work, and 
-
+use in nyuki. Writing geospatial libraries is hard work, and the folks developing
+these core libraries have done a really outstanding job. 
 
 
 📝 Table of Contents
@@ -77,14 +77,14 @@ processing tasks. The tools implemented so far include:
 
 The "Installing" section below gives a brief sketch of how to install the
 ``nyuki`` package. More detailed instructions are included in the "Installation"
-second of the package `documentation<https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/installation.html>`_.
+second of the package `documentation <https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/installation.html>`_.
 
 Learning to use ``nyuki`` assumes that the reader has a beginner level of understand
 of geospatial data including the difference between raster file and vector files,
 the basics of coordinate reference systems, and some familiarity with common
 GIS software such as QGIS or ESRI ArcGIS.
 
-Learning ``nyuki`` is as simple as following the `tutorial<https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/tutorial.html>`_.
+Learning ``nyuki`` is as simple as following the `tutorial <https://nyuki-a-geospatial-toolkit-for-humans.readthedocs.io/en/latest/tutorial.html>`_.
 
 
 Installing
@@ -96,7 +96,7 @@ difficult to install due to complicated dependencies between package or the
 need to compile C++ files. Hence we chose to use a more robust package
 manager: ``conda``. 
 
-Once conda is installed from the following `link <https://www.anaconda.com/products/individual>`_ ,
+Once conda is installed from the following `link <https://docs.conda.io/en/latest/miniconda.html>`_ ,
 the user can create new virtual environments and install packages like nyuki
 into those environments. ``Conda`` packages are stored in different public or
 private channels, depending on whether the developer intends a package for
@@ -164,8 +164,8 @@ Add notes about how to use the system.
 --------------
 
 -  `Click <https://click.palletsprojects.com/en/7.x/>`_ - Command Line Interface
--  `Rasterio<https://rasterio.readthedocs.io/en/latest/>`_ - Geospatial Library for Rasters
--  `Geopandas<https://geopandas.org/>`_ Geospatial Library for Vector data  
+-  `Rasterio <https://rasterio.readthedocs.io/en/latest/>`_ - Geospatial Library for Rasters
+-  `Geopandas <https://geopandas.org/>`_ Geospatial Library for Vector data  
 
 ✍️ Authors 
 ----------
