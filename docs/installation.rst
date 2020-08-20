@@ -86,33 +86,41 @@ the following code at the command prompt:
 
 .. code-block:: console
 
-    $ conda create --yes -n proj_nyuki python=3.7 -c krishnab75 nyuki
+    $ conda create --yes -n nyuki-env python=3.7
 
-This code will create a new ``conda`` environment--named ``proj_nyuki``--and then install the ``nyuki``
-package. If the use chooses, he/she can change ``proj_nyuki`` to any python compliant name that he/she
+This code will create a new ``conda`` environment--named ``nyuki-env`` that uses
+python version 3.7. The ``--yes`` flag just tells ``conda`` to proceed with installing
+the package instead of prompting the user to approve the installs.
+
+Next we must activate the environment and then install the ``nyuki`` package.
+
+.. code-block:: console
+
+    $ conda activate nyuki-env
+
+Once we activate an environment, then all of the python commands issued will
+refer to the packages in that environment--instead of referring the system
+packages. The prompt itself will usually change to refer to ``(nyuki-env)``
+to remind the user that he/she is in the anaconda environment. 
+
+Next let's install ``nyuki`` itself with:
+
+.. code-block:: console
+
+    $ conda install -c krishnab75 nyuki
+
+Note if the user chooses, he/she can change ``nyuki-env`` to any python compliant name that he/she
 desires. Currenty ``nyuki`` is stored in my personal Anaconda cloud channel, but
 that will soon change to ``conda-forge.``
 
 Congratulations, you have successfully installed the ``nyuki`` package.
 
 
-Step 4: Activating the ``conda`` environment and using ``nyuki``
+Step 4: Testing the install of ``nyuki``
 ****************************************************************
 
-Now that ``nyuki`` is installed, we can begin to use it. First we need to
-activate the new project environment and then we can test whether ``nyuki``
-was properly installed.
-
-To activate the new environment, use the following command at the terminal prompt.
-
-.. code-block:: console
-
-    $ conda activate proj_nyuki
-
-Most users will now see their prompt change to reference the new virtual environment
-(proj_nyuki). To test whether ``nyuki`` was successfully installed, the user can
+To test whether ``nyuki`` was successfully installed, the user can
 check whether the help functionality work on the package.
-
 
 .. code-block:: console
 
