@@ -203,22 +203,75 @@ prefer to work in some coordinate system that is more attuned to a local
 geographic region. Further, different coordinate systems use different units
 of length. Switching coordinate systems may sometimes make analysis easier
 because the units of length are easier to interpret. A good example of this
-is the 
+is the common latitude/longitude EPSG:4326 coordinate system which uses the hard to
+interpret unit length of "degrees, hours, minutes." Reprojecting this image to
+a coordinate system that uses meters or feet may be easier to interpret. So
+let's work through an example.
+
+Let's look at our original small image and determine its coordinate system and
+units.
 
 
+.. code-block:: console
+   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
 
 
+ 	 File info for: sample_image_small.tif: 
 
+	 Coordinate projection: EPSG:32737
+	 File type: GTiff
+	 File size: (1312, 2170)
+	 Pixel Units: metre
+	 Pixel size: (0.068, 0.068)
+	 Number of Bands: 3
+	 Data type per band: ('uint8', 'uint8', 'uint8')
+	 Compression: Uncompressed
+	 Nodata character: None
 
+So the coordinate system is EPSG:32732 with units in "meters". The EPSG: 32737
+coordinate system is local to Tanzania and hence users of Tanzanian imagery
+prefer to keep their images in the EPSG:32737 coordinate system.
 
+However, if for some reason the user needs to display his/her image with
+images from other parts of the world, then it is common to reproject that image
+to a common coordinate system. The EPSG:4326 coordinate system, based on
+Latitude/Longitude is often the default coordinate system and works well all
+over the world.
 
+Let's reproject our image to this new coordinate system.
+
+.. code-block:: console
+   (proj_nyuki)$ nyuki raster reproject --sourcetiff sample_image_small.tif --target_epsg EPSG:4326 -y
+
+After the code runs, the user can see the output file as ``sample_image_small_proj_4326.tif.``
+To check that the projection operation completed successfully we can use the
+``nyuki info`` tool as such 
+
+.. code-block:: console
+   (proj_nyuki)$ nyuki info --sourcefile sample_image_small_proj_4326.tif
+
+ 	 File info for: sample_image_small_proj_4326.tif: 
+
+	 Coordinate projection: EPSG:4326
+	 File type: GTiff
+	 File size: (1315, 2170)
+	 Pixel Units: unknown, likely degrees
+	 Pixel size: (0.0, 0.0)
+	 Number of Bands: 3
+	 Data type per band: ('uint8', 'uint8', 'uint8')
+	 Compression: lzw
+	 Nodata character: None
+
+Which show that the projection was applied. Alternatively we could load the
+file into QGIS or ArcGIS and check that the file is accurately reprojected,
+but otherwise unchanged. 
 
 
 =======================================================================
 Nyuki Resample: Upsampling/Downsampling images to different resolutions
 =======================================================================
 
-
+Next we can look at the 
 
 
 
