@@ -30,7 +30,7 @@ def main(sourcefile, target_epsg='EPSG:4326'):
     vreprojector(sourcefile, target_epsg)
     return 0
 
-def vreprojector(sourcefile, target_epsg='EPSG:4326'):
+def vreprojector(sourcefile, target_epsg='EPSG:4326', yes=False):
 
     # load file to get epsg info.
     buildings = gpd.read_file(sourcefile)
@@ -48,15 +48,14 @@ def vreprojector(sourcefile, target_epsg='EPSG:4326'):
     click.echo(f"source epsg: {buildings.crs}")
     click.echo(f"target epsg: {target_epsg}\n")
 
-    click.confirm('Are you ready to proceed?',
+    if not yes:
+        click.confirm('Are you ready to proceed?',
                   abort=True)
 
-    click.echo('\n[INFO] Executing reprojection.\n')
+        click.echo('\n[INFO] Executing reprojection.\n')
 
     buildings_reprojected = buildings.to_crs(target_epsg)
     buildings_reprojected.to_file(targetfile, driver='GeoJSON')
 
     click.echo('[INFO] Task complete.')
 
-if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
