@@ -72,7 +72,7 @@ def image_units(rasterio_open_image):
     if rasterio_open_image.crs.linear_units == 'unknown':
         return 'unknown, likely degrees'
     else:
-        return rasterio_open_image.linear_units
+        return rasterio_open_image.crs.linear_units
 
 
 if __name__ == "__main__":

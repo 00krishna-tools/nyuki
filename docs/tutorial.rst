@@ -69,7 +69,6 @@ check the Installation instructions located in this documentation website.
 
 To obtain the metadata information for the raster file, type:
 
-
 .. code-block:: console
 
     $ nyuki info --sourcefile sample_image_small.tif
@@ -77,8 +76,6 @@ To obtain the metadata information for the raster file, type:
 The output should resemble
 
 .. code-block:: console
-
- nyuki info --sourcefile sample_image_small.tif 
 
  	 File info for: sample_image_small.tif: 
 
@@ -106,6 +103,21 @@ read.
 
     $ gdalinfo sample_image_small.tif
 
+To see the metadata for a vector file, we use the same command, but with
+a reference to a vector file. Note that the vector information tool is still
+a work in process and currently shows only limited information. 
+
+.. code-block:: console
+
+    $ nyuki info --sourcefile sample_vector_file.geojson
+
+ 	 File info for: sample_vector_file.geojson: 
+
+	 Coordinate projection: epsg:4326
+
+Thus ``nyuki info`` provide an easy to read summary of file metadata for raster
+and vector files. 
+
 ==================================
 Nyuki Compress: Compressing images
 ==================================
@@ -131,6 +143,7 @@ To try out the compression features, let's start by looking at information on
 the small tif file and confirming that it really is uncompressed.
 
 .. code-block:: console
+
    (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
 
  	 File info for: sample_image_small.tif: 
@@ -150,6 +163,7 @@ The compression setting shows "Uncompressed."
 Next we can apply LZMA compression to the file using the following command.
 
 .. code-block:: console
+
    (proj_nyuki)$ nyuki raster compress --sourcetif sample_image_small.tif --target_compression LZMA -y
 
 After a minute, ``nyuki`` will indicate that the operation is complete. Now we
@@ -159,6 +173,7 @@ ways: check the file information and check the file size.
 To check the file information we can use the same command we originally used:
 
 .. code-block:: console
+
    (proj_nyuki)$ nyuki info --sourcefile sample_image_small_compress_LZMA.tif
 
  	 File info for: sample_image_small_compress_LZMA.tif: 
@@ -179,6 +194,7 @@ Further, if we want to see the different in file size, we could use a command
 like:
 
 .. code-block:: console
+
    (proj_nyuki)$ ls -lh
 
    -rw-rw-r-- 1 demo demo 282M Aug 11 14:07 sample_image_medium.tif
@@ -211,10 +227,9 @@ let's work through an example.
 Let's look at our original small image and determine its coordinate system and
 units.
 
-
 .. code-block:: console
-   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
 
+   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
 
  	 File info for: sample_image_small.tif: 
 
@@ -241,6 +256,7 @@ over the world.
 Let's reproject our image to this new coordinate system.
 
 .. code-block:: console
+
    (proj_nyuki)$ nyuki raster reproject --sourcetiff sample_image_small.tif --target_epsg EPSG:4326 -y
 
 After the code runs, the user can see the output file as ``sample_image_small_proj_4326.tif.``
@@ -248,6 +264,7 @@ To check that the projection operation completed successfully we can use the
 ``nyuki info`` tool as such 
 
 .. code-block:: console
+
    (proj_nyuki)$ nyuki info --sourcefile sample_image_small_proj_4326.tif
 
  	 File info for: sample_image_small_proj_4326.tif: 
@@ -271,13 +288,62 @@ but otherwise unchanged.
 Nyuki Resample: Upsampling/Downsampling images to different resolutions
 =======================================================================
 
-Next we can look at the 
+Next we can look at the resampling tool in ``nyuki.`` The resampling tool
+will either downsample or upsample an image to reduce or increase its resolution, respectively.
+Often large geospatial images are taken with very high resolution which also
+leads to high file sizes. For a website or publication format, image resolution
+is often downsampled/reduced to shrink the file size while preserving most
+of the detail.
 
+When we examine a file in ``nyuki``, we can see the resolution of each pixel
+as 0.067 meters. In other words, given that each pixel is square shaped, the
+height and width of each pixel corresponds to 6.7 centimeters.
 
+.. code-block:: console
 
+   (proj_nyuki)$ nyuki info --sourcefile sample_image_small.tif
 
+ 	 File info for: sample_image_small.tif: 
 
+	 Coordinate projection: EPSG:32737
+	 File type: GTiff
+	 File size: (1312, 2170)
+	 Pixel Units: metre
+	 Pixel size: (0.068, 0.068)
+	 Number of Bands: 3
+	 Data type per band: ('uint8', 'uint8', 'uint8')
+	 Compression: Uncompressed
+	 Nodata character: None
 
+By resampling the image we will reduce the image resolution so that each
+pixel corresponds to 22 centimeters. The choice of 22 centimeters is arbitrary,
+and users are free to resample to any size they wish.
+
+.. code-block:: console
+
+   (proj_nyuki)$ nyuki raster resample --sourcetiff sample_image_small.tif --target_resolution 0.22 -y
+
+Once the process is complete we can import the image into QGIS or ArcGIS to
+check the result. Or we can simply check the information on the image. 
+
+.. code-block:: console
+
+   (proj_nyuki)$ nyuki info --sourcefile sample_image_small_resampled_0_22metre.tif
+
+   File info for: sample_image_small_resampled_0_22metre.tif:
+
+	 Coordinate projection: EPSG:32737
+	 File type: GTiff
+	 File size: (405, 670)
+	 Pixel Units: metre
+	 Pixel size: (0.22, 0.22)
+	 Number of Bands: 3
+	 Data type per band: ('uint8', 'uint8', 'uint8')
+	 Compression: Uncompressed
+	 Nodata character: None
+
+The new pixel size indicates that each pixel is now 22 centimeters square and
+that the image has been successfully resampled. 
 
 
 
