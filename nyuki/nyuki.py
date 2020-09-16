@@ -20,7 +20,7 @@ def nyuki():
     Nyuki makes it easy to process raster and vector images using python.
     Use one of the commands listed below to reproject, upsample, downsample,
     or compress your Geotiff or Geojson files. Nyuki was developed in
-    collaboration with DataKind and WeRobotics. 
+    collaboration with DataKind and WeRobotics.
     """
     pass
 
@@ -128,8 +128,8 @@ def reproject(sourcetiff, target_epsg='EPSG:4326', yes=False):
               prompt="Source file path",
               help="Enter the path to the original GEOTIFF raster image")
 @click.option('--target_compression', default='LZW', show_default=True,
-              type=click.Choice(['LZW', 'LZMA','JPEG', 'JPEG2000',
-                                 'DEFLATE', 'ZSTD', 'NONE'], case_sensitive=True),
+              type=click.Choice(['LZW','JPEG','JPEG2000',
+                                 'DEFLATE', 'NONE'], case_sensitive=True),
               prompt="Target compression method",
               help="Enter the compression standard to apply to the raster.")
 @click.option('--yes', '-y', is_flag=True, default=False, help="Execute command without prompting for user confirmation.")
@@ -137,19 +137,19 @@ def compress(sourcetiff, target_compression, yes):
     """ Compress Geotiff raster files to shrink file size.
 
        This tool will compress a Geotiff raster image using the specified compression
-       method. The supported methods are LZW, LZMA, JPEG, and JPEG2000 standards.
+       method. The supported methods are LZW, JPEG, DEFLATE, and JPEG2000 standards.
        JPEG and JPEG2000 compression usually produce the smallest files and are good
-       for most users, even though the method is "lossy." Alternatively, LZW and LZMA
-       are "lossless" methods, but they produce larger file sizes.
+       for most users, even though the method is "lossy." Alternatively, LZW
+       is "lossless" methods, but they produce larger file sizes.
 
        The link provides a good overview of preferred compression methods for different
        use cases.
        https://doc.arcgis.com/en/imagery/workflows/best-practices/imagery-formats-and-performance.htm
 
        Note that in some cases, compression can make the file size larger. Hence it could
-       take a few attempts to find the right compression scheme. 
+       take a few attempts to find the right compression scheme.
 
-    
+
         Commandline app:\n
         >>> nyuki raster compress --sourcetiff file1.tif --target_compression 'LZW' -y
 
@@ -203,11 +203,3 @@ def reproject(sourcefile, target_epsg='EPSG:4326', yes=False):
 
 if __name__ == '__main__':
     nyuki()
-
-
-
-
-
-
-
-
