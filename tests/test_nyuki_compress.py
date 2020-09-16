@@ -11,11 +11,10 @@ import os
 @pytest.mark.usefixtures('small_image')
 
 
-@pytest.mark.parametrize("compression", ['LZW', 'LZMA','JPEG', 'JPEG2000','DEFLATE','ZSTD', 'NONE'])
+@pytest.mark.parametrize("compression", ['LZW','JPEG', 'JPEG2000','DEFLATE', 'NONE'])
 def test_lzw_compression(small_image, compression):
 
     newfile = compressor(small_image, compression, yes=True)
     res = nyuki.utilities.dhash_distance(small_image, newfile, hash_size=8)
     os.remove(newfile)
-    assert  res < 0.20
-
+    assert res < 0.20
