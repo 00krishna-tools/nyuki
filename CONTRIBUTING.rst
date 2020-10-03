@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/00krishna/nyuki/issues.
+Report bugs at https://github.com/00krishna-tools/nyuki/issues.
 
 If you are reporting a bug, please include:
 
@@ -45,7 +45,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/00krishna/nyuki/issues.
+The best way to send feedback is to file an issue at https://github.com/00krishna-tools/nyuki/issues.
 
 If you are proposing a feature:
 
@@ -79,7 +79,7 @@ Ready to contribute? Here's how to set up `Nyuki` for local development.
 5. When you're done making changes, check that your changes pass flake8 and the
    tests, including testing other Python versions with tox::
 
-    $ flake8 nyui tests
+    $ flake8 nyuki tests
     $ python setup.py test or py.test
     $ tox
 
@@ -103,7 +103,7 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
 3. The pull request should work for Python 3.4, 3.5 and 3.6, and for PyPy. Check
-   https://travis-ci.org/00krishna/nyuki/pull_requests
+   https://travis-ci.org/00krishna-tools/nyuki/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips
