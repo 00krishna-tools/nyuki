@@ -1,14 +1,11 @@
 
-
-
-
 """
 NOTE THAT THIS ENTIRE MODULE IS TAKEN FROM Jetsetter https://github.com/Jetsetter/dhash .
 I am using the conda package manager to install this package, and that does not allow
 me to install packages from outside of conda defaults or conda-forge. Since the
 dhash package is not in either of these channels, I just copied the code into this module.
 I wanted to make sure that Jetsetter received the credit for developing this module,
-and that I am simply copying the module from him/her while giving him/her appropriate attribution. 
+and that I am simply copying the module from him/her while giving him/her appropriate attribution.
 
 
 Calculate difference hash (perceptual hash) for a given image, useful for detecting duplicates.
@@ -22,7 +19,7 @@ https://github.com/Jetsetter/dhash
 """
 
 from __future__ import division
-
+import numpy as np
 import sys
 
 # Allow library to be imported even if neither wand or PIL are installed
@@ -234,5 +231,3 @@ def force_pil():
     if PIL is None:
         raise ValueError('Pillow/PIL library must be installed to use force_pil()')
     wand = None
-
-

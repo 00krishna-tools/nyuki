@@ -26,7 +26,7 @@ def get_file_type(filename):
     """
     This function will determine whether a file is a raster or vector
     geospatial file. For example, a Geotiff file is a raster file, while
-    a shapefile or geojson file is a vector file.  
+    a shapefile or geojson file is a vector file.
     """
 
     ds = gdal.OpenEx(filename)
@@ -46,9 +46,9 @@ def get_file_type(filename):
 
 
 def dhash_distance(left, right, hash_size=8):
-        left = Image.open(left)
-        right = Image.open(right)
-        hash1 = dhash_int(left, size=hash_size)
-        hash2 = dhash_int(right, size=hash_size)
-        num_bits_different = get_num_bits_different(hash1, hash2)
-        return 100 * num_bits_different / (hash_size * hash_size * 2)
+    left = Image.open(left)
+    right = Image.open(right)
+    hash1 = dhash_int(left, size=hash_size)
+    hash2 = dhash_int(right, size=hash_size)
+    num_bits_different = get_num_bits_different(hash1, hash2)
+    return 100 * num_bits_different / (hash_size * hash_size * 2)
