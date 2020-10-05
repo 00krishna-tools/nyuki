@@ -25,8 +25,8 @@ def test_small_compression(small_image, compression):
     assert res < 0.20
 
 
-@pytest.mark.parametrize("compression", ['JPEG'])
-def test_bigtiff_compression(big_image, compression):
-    newfile = compressor(big_image, compression, yes=True)
-    os.remove(newfile)
-    assert True
+#@pytest.mark.parametrize("compression", ['JPEG'])
+#def test_bigtiff_compression(big_image, compression):
+#    newfile = compressor(big_image, compression, yes=True)
+#    os.remove(newfile)
+#    assert True
