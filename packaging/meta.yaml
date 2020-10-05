@@ -6,7 +6,7 @@ package:
   name: {{ name|lower }}
   version: {{ version }}
 
-source: 
+source:
   url: https://github.com/00krishna-tools/nyuki/archive/v{{ version }}.tar.gz
   sha256: 1af6b02a9732acda57b4ffb8f5abb533b74b94efa5ee1f2db3b3c2c3c4640b0f
 
@@ -28,6 +28,7 @@ requirements:
     - geopandas
     - pillow
     - libwebp
+    - libtiff >4.0
   run:
     - python >3.5
     - numpy >=1.18.5
@@ -38,10 +39,20 @@ requirements:
     - geopandas
     - pillow
     - libwebp
+    - libtiff >4.0
 
 test:
   imports:
     - nyuki
+  commands:
+    - test -f ${PREFIX}/lib/libtiff.a  # [not win]
+    - test -f ${PREFIX}/lib/libtiffxx.a  # [not win]
+    - test -f ${PREFIX}/lib/libtiff{{ SHLIB_EXT }}  # [not win]
+    - test -f ${PREFIX}/lib/libtiffxx{{ SHLIB_EXT }}  # [not win]
+    - if not exist %PREFIX%\\Library\\bin\\tiff.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\tiffxx.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\libtiff.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\libtiffxx.dll exit 1  # [win]
 
 about:
   home: https://github.com/00krishna-tools/nyuki
