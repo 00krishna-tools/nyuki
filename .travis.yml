@@ -27,15 +27,12 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda config --add channels conda-forge 
-#  - conda install conda-build=3.19.2
+  - conda config --add channels conda-forge
   - conda create -q -n test-environment python=$TOXENV conda pytest six pytest-cov pytest-mock coveralls
-  - conda activate test-environment 
+  - conda activate test-environment
   - conda install --yes --file requirements_conda.txt
   - pip install -r requirements.txt
   - python setup.py install
-#  - conda build packaging/  # add directory if needed.
-#  - conda install --use-local nyuki
 
 script:
   - pytest tests
