@@ -14,7 +14,7 @@ def compressor(sourcefile, target_compression='LZW', yes=False):
     # load file to get info.
     dat = rasterio.open(sourcefile)
     profile = dat.profile.copy()
-    
+
     # create new target filename
     targetfile = os.path.basename(sourcefile).split('.')[0] \
                 + '_compress_' \
@@ -30,7 +30,7 @@ def compressor(sourcefile, target_compression='LZW', yes=False):
 
 
     # check if new compression is same as old compression
-    
+
     if not yes:
         click.confirm('[INFO] File compression takes a while.\nDo you want to continue?',
                   abort=True)
@@ -45,8 +45,8 @@ def compressor(sourcefile, target_compression='LZW', yes=False):
     # specify compression standard
         profile.update(
             compress=target_compression,
-            BIGTIFF = "IF_SAFER")
-        
+            BIGTIFF = "YES")
+
         with rasterio.open(targetfile, 'w', **profile) as dst:
             for ji, window in dat.block_windows(1):
                 dst.write(dat.read(window=window), window=window)
