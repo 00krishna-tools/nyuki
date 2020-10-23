@@ -51,7 +51,7 @@ def compressor(sourcefile, target_compression='LZW', yes=False):
 #            for ji, window in dat.block_windows(1):
 #                dst.write(dat.read(window=window), window=window)
 
-        rasterio.shutil.copy(dat, target_file, compress=target_compression, BIGTIFF="IF_SAFER")
+        rasterio.shutil.copy(dat, targetfile, compress=target_compression, BIGTIFF="IF_SAFER")
     click.echo('[INFO] Task complete.')
 
     return targetfile
