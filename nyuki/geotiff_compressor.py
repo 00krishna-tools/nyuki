@@ -7,7 +7,7 @@ import os
 import click
 import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling
-
+import rasterio.shutil
 
 def compressor(sourcefile, target_compression='LZW', yes=False):
 
