@@ -1,4 +1,3 @@
-
 {% set name = "nyuki" %}
 {% set version = "0.0.3" %}
 

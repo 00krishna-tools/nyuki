@@ -7,7 +7,7 @@ import os
 import click
 import rasterio
 from rasterio.warp import calculate_default_transform, reproject, Resampling
-
+import shutil
 
 def compressor(sourcefile, target_compression='LZW', yes=False):
 
@@ -43,14 +43,15 @@ def compressor(sourcefile, target_compression='LZW', yes=False):
     # the new file's profile, we start with the profile of the source
 
     # specify compression standard
-        profile.update(
-            compress=target_compression,
-            BIGTIFF = "YES")
+#        profile.update(
+#            compress=target_compression,
+#            BIGTIFF = "YES")
 
-        with rasterio.open(targetfile, 'w', **profile) as dst:
-            for ji, window in dat.block_windows(1):
-                dst.write(dat.read(window=window), window=window)
+#        with rasterio.open(targetfile, 'w', **profile) as dst:
+#            for ji, window in dat.block_windows(1):
+#                dst.write(dat.read(window=window), window=window)
 
+        rasterio.shutil.copy(dat, target_file, compress=target_compression, BIGTIFF="IF_SAFER")
     click.echo('[INFO] Task complete.')
 
     return targetfile
