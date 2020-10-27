@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/00krishna-tools/nyuki/archive/v{{ version }}.tar.gz
-  sha256: f98b3d43bdc89fe4d10dfe5da59d9e961013329df7d799396195b31cf15f84ed
+  sha256: 480867706d8f77408892559ba162f2a7c716b5c4ecbf32135f246e86cac4fbe1
 
 build:
   noarch: python
