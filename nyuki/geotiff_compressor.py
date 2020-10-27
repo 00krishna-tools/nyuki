@@ -43,15 +43,15 @@ def compressor(sourcefile, target_compression='LZW', yes=False):
     # the new file's profile, we start with the profile of the source
 
     # specify compression standard
-#        profile.update(
-#            compress=target_compression,
-#            BIGTIFF = "YES")
+        profile.update(
+            compress=target_compression,
+            BIGTIFF="IF_SAFER")
 
-#        with rasterio.open(targetfile, 'w', **profile) as dst:
-#            for ji, window in dat.block_windows(1):
-#                dst.write(dat.read(window=window), window=window)
+        with rasterio.open(targetfile, 'w', **profile, tiled=True, blockxsize=256, blockysize=256) as dst:
+            for ji, window in dat.block_windows(1):
+                dst.write(dat.read(window=window), window=window)
 
-        rasterio.shutil.copy(dat, targetfile, compress=target_compression, BIGTIFF="IF_SAFER")
+#        rasterio.shutil.copy(dat, targetfile, compress=target_compression, BIGTIFF="YES")
     click.echo('[INFO] Task complete.')
 
     return targetfile
